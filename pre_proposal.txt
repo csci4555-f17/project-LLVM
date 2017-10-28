@@ -1,0 +1,4 @@
+1) Team Members:
+   Megan Greening, Kathy Grimes, Aniq Shahid, Colton Williams
+2) Basic problem to solve:
+   Our team is thinking about developing P0 front-end for LLVM compiler library. More specifically, we are thinking about transforming P0 language into an AST or some other form which can then interface with LLVM IR building APIs to generate LLVM optimized code. Permitting time and resources, we will expand the idea to P1 and P2 languages, and also look into LLVM optimizations specific to these languages.
