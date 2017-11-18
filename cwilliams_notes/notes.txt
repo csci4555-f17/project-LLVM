@@ -1,0 +1,14 @@
+1. generate all .ll files
+    clang-3.8 -S -emit-llvm *.c
+2. link them into a single one
+    llvm-link-3.8 -S -v -o single.ll *.ll
+3. (Optional) Optimise your code (maybe some alias analysis)
+    opt-3.8 -S -O3 -aa -basicaaa -tbaa -licm single.ll -o optimised.ll
+4. Generate assembly (generates a optimised.s file)
+    llc-3.8 optimised.ll
+5. Create executable (named a.out)
+    clang-3.8 optimised.s
+
+
+Links:
+    http://releases.llvm.org/2.6/docs/tutorial/JITTutorial1.html
