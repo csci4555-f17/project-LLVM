@@ -1,0 +1,13 @@
+Generating LLVM IR for runtime environment
+==========================================
+
+1. Enter Docker container by running 
+        ./docker-run.sh
+    - Note: the code inside of ./runtime will be mounted inside the container
+2. From inside container 
+        cd /opt/runtime
+        clang-3.8 -S -emit-llvm *.c
+        llvm-link-3.8 -S -v -o runtime.ll *.ll
+3. At this point you will have a single 'runtime.ll' file that contains the LLVM IR 
+   representation the entire runtime environment, which should be useful for compiling
+   subsequent Python programs
