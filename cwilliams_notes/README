@@ -9,5 +9,18 @@ Generating LLVM IR for runtime environment
         clang-3.8 -S -emit-llvm *.c
         llvm-link-3.8 -S -v -o runtime.ll *.ll
 3. At this point you will have a single 'runtime.ll' file that contains the LLVM IR 
-   representation the entire runtime environment, which should be useful for compiling
+   representation of the entire runtime environment, which should be useful for compiling
    subsequent Python programs
+
+Generate SO from runtime
+========================
+1. gcc -c -fPIC -m32 *.c 
+2. gcc *.o -m32 -shared -o runtimelib.so
+
+ALTERNATIVELY
+gcc -shared -o runtimelib.so -fPIC -m32 *.c
+
+Linking SO in llvm
+==================
+llvmlite.binding.load_library_permanently("runtime.so")
+

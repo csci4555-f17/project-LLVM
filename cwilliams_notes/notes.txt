@@ -9,6 +9,19 @@
 5. Create executable (named a.out)
     clang-3.8 optimised.s
 
+Generate runtime.so
+===================
+gcc -shared -o runtime.so -fPIC *.c
+
 
 Links:
     http://releases.llvm.org/2.6/docs/tutorial/JITTutorial1.html
+   
+    linking a binary in llvmlite
+    https://stackoverflow.com/questions/36658726/link-c-in-llvmlite
+
+    linking c in llvmlite
+    https://stackoverflow.com/questions/36658726/link-c-in-llvmlite
+
+    allow llvmlite to also link object code
+    https://github.com/numba/llvmlite/issues/311

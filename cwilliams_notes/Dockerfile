@@ -1,8 +1,7 @@
-FROM continuumio/miniconda
 FROM ubuntu:latest
 
 RUN apt-get -y update && \
- 	apt-get -y install make gcc libc6-dev-i386 python-pip vim wget clang 
+ 	apt-get -y install make gcc libc6-dev-i386 python-pip vim wget clang
 
 RUN pip install --upgrade pip && \
 	pip install ply ipython pytest
@@ -16,5 +15,6 @@ RUN conda install -y llvmlite
 
 COPY simplefunction.py /root
 COPY generate-exec.sh /root
+COPY simplecompile.py /root
 
 WORKDIR /root
