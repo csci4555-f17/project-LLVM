@@ -150,24 +150,11 @@ def explicate(ast_):
                                        [ProjectTo('big', l), ProjectTo('big', r)]))))
                                          
             return letify(exp_left, lambda l: letify(exp_right, lambda r: result(l,r)))
-                                   
 
         if isinstance(n, Add):
-            #only support And of 2 nodes
             left = descend(n.left)
             right = descend(n.right)
-
-            def result(l, r):
-                return IfExp(InjectFrom('bool', CompareTag(l, INT_TYPE)),
-                             InjectFrom('int', Add((ProjectTo('int', l), \
-                                                    ProjectTo('int', r)))),
-                             IfExp(InjectFrom('bool', CompareTag(l, BOOL_TYPE)),
-                                   InjectFrom('int', Add((ProjectTo('bool', l), \
-                                                          ProjectTo('bool', r)))),
-                                   InjectFrom('big', CallFunc(Name('add'), [
-                                       ProjectTo('big', l), ProjectTo('big', r)]))))
-
-            return letify(left, lambda l: letify(right, lambda r: result(l,r)))
+            return LLVMRuntimeAdd(left, right)
 
         if isinstance(n, Or):
             left = descend(n.nodes[0])

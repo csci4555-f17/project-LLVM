@@ -1,5 +1,5 @@
 from compiler.ast import *
-from ast_types import Let, CompareExactly, CompareTag, GetTag, InjectFrom, ProjectTo, INT_TYPE, BOOL_TYPE, BIG_TYPE, Bool, CallUserFunc, LambdaHeapified
+from ast_types import *
 from uniquify import heapify_vars
 import freevars
 import values_variables as vv
@@ -185,6 +185,11 @@ def closure_convert(ast_):
                 opcodes.append((op[0], opcode))
             
             return (Compare(ecode, opcodes), efuns + opfuns)
+
+        if isinstance(n, LLVMRuntimeAdd):
+            (lcode, lfuns) = descend(n.left)
+            (rcode, rfuns) = descend(n.right)
+            return (LLVMRuntimeAdd(lcode, rcode), lfuns + rfuns)
 
         if isinstance(n, LambdaHeapified):
             

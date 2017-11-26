@@ -125,6 +125,18 @@ class Flattener():
             (assn_instrs, assn_var) = self.assign_new(t.Add(slLast, srLast))
             return (stmts + assn_instrs, assn_var)
 
+        elif isinstance(n, LLVMRuntimeAdd):
+            stmts = []
+            try:
+                (sl, slLast) = self.descend(n.left)
+            except Exception:
+                raise Exception()
+            (sr, srLast) = self.descend(n.right)
+            stmts += sl + sr
+            
+            (assn_instrs, assn_var) = self.assign_new(t.LLVMRuntimeAdd(slLast, srLast))
+            return (stmts + assn_instrs, assn_var)
+
         elif isinstance(n, UnarySub):
             (s, slast) = self.descend(n.expr)
             (assmt_instrs, assmt_var) = self.assign_new(t.Neg(slast))

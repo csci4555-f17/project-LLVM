@@ -12,6 +12,17 @@ class Add(SimpleExpression):
 
     def __repr__(self):
         return "%s + %s" % (self.left, self.right)
+    
+class LLVMRuntimeAdd(SimpleExpression):
+    def __init__(self, left, right):
+        self.left = left 
+        self.right = right 
+
+    def __str__(self):
+        return "LLVMRuntimeAdd(%s, %s)" % (self.left, self.right)
+
+    def __repr__(self):
+        return "LLVMRuntimeAdd(%s, %s)" % (self.left, self.right)
 
 class Sub(SimpleExpression):
     def __init__(self, left, right):
@@ -31,7 +42,7 @@ class Neg(SimpleExpression):
     def __str__(self):
         return "- %s" % (self.val)
 
-    def __str__(self):
+    def __repr__(self):
         return "- %s" % (self.val)
 
 class StatementsAndAtom():

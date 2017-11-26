@@ -1,5 +1,5 @@
 from compiler.ast import *
-from ast_types import Let, CompareExactly, CompareTag, GetTag, InjectFrom, ProjectTo, INT_TYPE, BOOL_TYPE, BIG_TYPE, Bool, CallUserFunc, LambdaHeapified
+from ast_types import *
 from uniquify import heapify_vars
 
 def heapify(ast_):
@@ -59,6 +59,9 @@ def heapify(ast_):
 
         if isinstance(n, ProjectTo):
             return ProjectTo(n.typ, descend(n.arg))
+
+        if isinstance(n, LLVMRuntimeAdd):
+            return LLVMRuntimeAdd(descend(n.left), descend(n.right))
 
         if isinstance(n, Printnl):
             nodes = n.nodes

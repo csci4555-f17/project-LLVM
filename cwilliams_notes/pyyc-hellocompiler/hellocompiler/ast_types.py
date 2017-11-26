@@ -267,42 +267,13 @@ class Method(Node):
     def __repr__(self):
         return "Method(%s, %s, %s, %s)" % (self.name, self.c, self.argnames, self.code)
 
-class RFCreateClass():
-    def __init__(self, bases):
-        self.bases = bases
-
+class LLVMRuntimeAdd(Node):
+    def __init__(self, left, right):
+        self.left = left
+        self.right = right
+    
     def __repr__(self):
-        return "RFCreateClass(%s)" % self.bases
-
-class RFCreateObj():
-    def __init__(self, cl):
-        self.cl = cl
-
-class RFGetClass():
-    def __init__(self, o):
-        self.o = o
-
-class RFGetReceiver():
-    def __init__(self, o):
-        self.o = o
-
-class RFGetFunction():
-    def __init__(self, o):
-        self.o = o
-
-class RFHasAttr():
-    def __init__(self, o, attr):
-        self.o = o
-        self.attr = attr
-
-class RFGetAttr():
-    def __init__(self, o, attr):
-        self.o = o
-        self.attr = attr
-
-class RFSetAttr():
-    def __init__(self, o, attr, val):
-        self.o = o
-        self.attr = attr
-        self.val = val
-
+        return "llvm_runtime_add(%s, %s)" % (self.left, self.right)
+    
+    def __str__(self):
+        return "llvm_runtime_add(%s, %s)" % (self.left, self.right)

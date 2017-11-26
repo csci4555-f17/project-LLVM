@@ -42,12 +42,15 @@ if __name__ == "__main__":
         declassified = declassify.declassify(parsed)
         uniqued = uniquify.unique(declassified)
         explicated = exp.explicate(uniqued)
+#        print explicated
         heaped = heapify.heapify(explicated)
+#        print "heaped", heaped
         (code, funs) = closure_convert.closure_convert(heaped)
+#        print code
         flat_code = flat.flatten(code)
-        #print flat_code
+#        print flat_code
 
         b = builder.Builder(flat_code)
         b.build()
-        #print b.module
+        print b.module
         ct.compile(str(b.module))

@@ -61,13 +61,19 @@ class Builder():
                         r = self.variable_mapping[exp.args[1]]
                         func = self.create_add(builder)
                         res = builder.call(func, [l, r])
-
                     elif isinstance(exp, T.Add):
                         l = self.variable_mapping[exp.left]
                         r = self.variable_mapping[exp.right]
                         res = builder.add(lhs=l, rhs=r)
+                    elif isinstance(exp, T.LLVMRuntimeAdd):
+                        l = self.variable_mapping[exp.left]
+                        r = self.variable_mapping[exp.right]
+                        func = self.create_llvm_runtime_add(builder)
+                        res = builder.call(func, [l, r])
                     elif isinstance(exp, vv.Variable):
                         res = self.variable_mapping[exp]
+                    elif isinstance(exp, vv.BoolValue):
+                        res = ir.Constant(Builder.integer, int(exp.v))
                     else:
                         raise Exception("unsupported ", exp)
 
@@ -197,4 +203,65 @@ class Builder():
             func_type = ir.FunctionType(Builder.integer, (Builder.integer, Builder.integer))
             func = ir.Function(self.module, func_type, name='add')
             self.variable_mapping['add'] = func
+            return func
+
+    def create_llvm_runtime_add(self, builder):
+        try:
+            return self.variable_mapping['llvm_runtime_add']
+        except KeyError:
+            # Needed runtime funcs
+            is_int = self.create_is_int(builder)
+            is_bool = self.create_is_bool(builder)
+            is_true = self.create_is_true(builder)
+            inject_bool = self.create_inject_bool(builder)
+            project_bool = self.create_project_bool(builder)
+            inject_int = self.create_inject_int(builder)
+            project_int = self.create_project_int(builder)
+            inject_big = self.create_inject_big(builder)
+            project_big = self.create_project_big(builder)
+
+            func_type = ir.FunctionType(Builder.integer, (Builder.integer, Builder.integer))
+            func = ir.Function(self.module, func_type, name='llvm_runtime_add')
+            block = func.append_basic_block(name="entry")
+            this_builder = ir.IRBuilder(block)
+            left, right = func.args
+
+
+            res0 = this_builder.call(is_int, [left])
+            res1 = this_builder.call(inject_bool, [res0])
+            res2 = this_builder.call(is_true, [res1])
+            res3 = this_builder.icmp_unsigned('!=', lhs=res2, rhs=Builder.zero) 
+            with this_builder.if_else(res3) as (then, otherwise):
+                with then:
+                    # treat them as ints
+                    res4 = this_builder.call(project_int, [left])
+                    res5 = this_builder.call(project_int, [right])
+                    res6 = this_builder.add(lhs=res4, rhs=res5)
+                    res7 = this_builder.call(inject_int, [res6])
+                    this_builder.ret(res7)
+                with otherwise:
+                    # are they bools?
+                    res8 = this_builder.call(is_bool, [left])
+                    res9 = this_builder.call(inject_bool, [res8])
+                    res10 = this_builder.call(is_true, [res9])
+                    res11 = this_builder.icmp_unsigned('!=', lhs=res10, rhs=Builder.zero) 
+                    with this_builder.if_else(res11) as (otherwisethen, otherwiseelse):
+                        with otherwisethen:
+                            # treat them as bools
+                            res12 = this_builder.call(project_bool, [left])
+                            res13 = this_builder.call(project_bool, [right])
+                            res14 = this_builder.add(lhs=res12, rhs=res13)
+                            res15 = this_builder.call(inject_int, [res14])
+                            this_builder.ret(res15)
+                        with otherwiseelse:
+                            # treat them as bigs
+                            res16 = this_builder.call(project_big, [left])
+                            res17 = this_builder.call(project_big, [right])
+                            res18 = this_builder.add(lhs=res16, rhs=res17)
+                            res19 = this_builder.call(inject_big, [res18])
+                            this_builder.ret(res19)
+            # Should never reach this
+            this_builder.ret(Builder.zero)
+        
+            self.variable_mapping['llvm_runtime_add'] = func
             return func
