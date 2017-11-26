@@ -1,0 +1,11 @@
+*.pyc
+*.o
+*.a
+*.s
+*.warn
+*.out
+*.swp
+*.expected
+.cache/
+*tab.py
+tests/resources/*

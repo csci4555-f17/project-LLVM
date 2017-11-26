@@ -1,0 +1,1406 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="en" dir="ltr"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie10 lt-ie9 lt-ie8" lang="en" dir="ltr"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie10 lt-ie9" lang="en" dir="ltr"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js lt-ie10" lang="en" dir="ltr"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" dir="ltr"> <!--<![endif]-->
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="Canonical" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>Ubuntu security notices | Ubuntu</title>
+
+        <link rel="shortcut icon" href="//assets.ubuntu.com/sites/ubuntu/latest/u/img/favicon.ico" type="image/x-icon" />
+
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="//assets.ubuntu.com/sites/ubuntu/latest/u/img/apple-touch-icon-144x144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="//assets.ubuntu.com/sites/ubuntu/latest/u/img/apple-touch-icon-114x114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="//assets.ubuntu.com/sites/ubuntu/latest/u/img/apple-touch-icon-72x72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="//assets.ubuntu.com/sites/ubuntu/latest/u/img/apple-touch-icon-precomposed.png">
+        <link type="text/plain" rel="author" href="//assets.ubuntu.com/sites/ubuntu/latest/u/files/humans.txt" />
+
+        <!-- google fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,700,700italic%7CUbuntu+Mono' rel='stylesheet' type='text/css' />
+
+        <!-- stylesheets -->
+        <link rel="stylesheet" type="text/css" media="screen" href="//assets.ubuntu.com/sites/guidelines/css/responsive/latest/ubuntu-styles.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="//assets.ubuntu.com/sites/ubuntu/latest/u/css/styles.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="//assets.ubuntu.com/sites/ubuntu/latest/u/css/beta/global-responsive.css" />
+        <link rel="stylesheet" type="text/css" media="print" href="//assets.ubuntu.com/sites/ubuntu/latest/u/css/core-print.css" />
+
+        <!-- javascript -->
+        <script src="http://assets.ubuntu.com/sites/ubuntu/1167/u/js/plugins/modernizr.2.7.1.js"></script>
+        
+<style>
+.hide {
+	display: none !important;
+}
+#releaselisttop,
+#releaselistbottom {
+  display: inline-block;
+}
+.notice {
+  padding: 2em 0;
+  border-bottom: 1px dotted #888;
+}
+.notice:last-of-type {
+  border-bottom: 0;
+}
+</style>
+
+    </head>
+<body class="">
+<header class="banner global" role="banner">
+
+    <nav role="navigation" class="nav-primary nav-right">
+        <span id="main-navigation-link"><a href="#main-navigation">Jump to site nav</a></span>
+        <div class="logo">
+            <a class="logo-ubuntu" href="/">
+                <img width="106" height="25" src="//assets.ubuntu.com/sites/ubuntu/latest/u/img/logos/logo-ubuntu-orange.svg" alt="" />
+            </a>
+        </div>
+        <ul>
+            <li class="accessibility-aid"><a accesskey="s" href="#main-content">Jump to content</a></li>
+            <li><a class="first" href="/cloud">Cloud</a>
+                <ul class="second-level-nav">
+                    <li class="first"><a href="/cloud">Overview</a></li>
+                    <li><a href="/cloud/ubuntu-openstack">Ubuntu OpenStack</a></li>
+                    <li><a href="/cloud/public-cloud">Public cloud</a></li>
+                    <li><a href="/cloud/tools">Cloud tools</a></li>
+                    <li><a href="/cloud/management">Cloud management</a></li>
+                    <li><a href="/cloud/ecosystem">Ecosystem</a></li>
+                    <li><a href="/cloud/labs">Cloud labs</a></li>
+                </ul>
+            </li>
+            <li><a href="/server">Server</a>
+                <ul class="second-level-nav">
+                    <li class="first"><a href="/server">Overview</a></li>
+                    <li><a href="/server/management">Server management</a></li>
+                    <li><a href="/server/hyperscale">Hyperscale</a></li>
+                </ul>
+            </li>
+            <li><a  href="/desktop">Desktop</a>
+                <ul class="second-level-nav">
+                    <li class="first"><a href="/desktop">Overview</a></li>
+                    <li><a href="/desktop/features">Features</a></li>
+                    <li><a href="/desktop/business">For business</a></li>
+                    <li><a href="/desktop/developers">For developers</a></li>
+                    <li><a href="/desktop/take-the-tour">Take the tour</a></li>
+                    <li><a href="/desktop/management">Desktop management</a></li>
+                    <li><a href="/desktop/ubuntu-kylin">Ubuntu Kylin</a></li>
+                </ul>
+            </li>
+            <li><a href="/phone">Phone</a>
+                <ul class="second-level-nav">
+                    <li class="first"><a href="/phone">Overview</a></li>
+                    <li><a href="/phone/features" >Features</a></li>
+                    <li><a href="/phone/scopes" >Scopes</a></li>
+                    <li><a href="/phone/app-ecosystem">App ecosystem</a></li>
+                    <li><a href="/phone/operators-and-oems" >Operators and OEMs</a></li>
+                    <li><a href="/phone/carrier-advisory-group">Carrier Advisory Group</a></li>
+                    <li><a href="/phone/ubuntu-for-android">Ubuntu for Android</a></li>
+                </ul>
+            </li>
+            <li><a href="/tablet">Tablet</a>
+                <ul class="second-level-nav">
+                    <li class="first"><a href="/tablet">Design</a></li>
+                    <li><a href="/tablet/operators-and-oems">Operators and OEMs</a></li>
+                    <li><a href="/tablet/app-ecosystem">App ecosystem</a></li>
+                </ul>
+            </li>
+            <li><a href="/tv">TV</a>
+                <ul class="second-level-nav">
+                    <li class="first"><a href="/tv">Overview</a></li>
+                    <li><a href="/tv/experience">Experience</a></li>
+                    <li><a href="/tv/industry">Industry</a></li>
+                    <li><a href="/tv/contributors">Contributors</a></li>
+                    <li><a href="/tv/features-and-specs">Features and specs</a></li>
+                    <li><a href="/tv/commercial-info">Commercial info</a></li>
+                </ul>
+            </li>
+            <li><a href="/management">Management</a>
+                <ul class="second-level-nav">
+                    <li class="first"><a href="/management">Overview</a></li>
+                    <li><a href="/management/landscape-features">Landscape features</a></li>
+                    <li><a href="/management/working-with-landscape">Working with Landscape</a></li>
+                    <li><a href="/management/return-on-investment">Return on investment</a></li>
+                    <li><a href="/management/compliance">Compliance</a></li>
+                    <li><a href="/management/ubuntu-advantage">Ubuntu Advantage</a></li>
+                </ul>
+            </li>
+            <li><a href="/download">Download</a>
+                <ul class="second-level-nav">
+                    <li class="first"><a href="/download">Overview</a></li>
+                    <li><a href="/download/cloud">Cloud</a></li>
+                    <li><a href="/download/server">Server</a></li>
+                    <li><a href="/download/desktop">Desktop</a></li>
+                    <li><a href="/download/ubuntu-kylin">Ubuntu Kylin</a></li>
+                    <li><a href="/download/alternative-downloads">Alternative downloads</a></li>
+                </ul>
+            </li>
+        </ul>
+        <form action="/search" id="google-appliance-search-form" class="header-search">
+            <label for="edit-keys" class="accessibility-aid">Search</label>
+            <input type="search" maxlength="255" name="q" id="edit-keys" class="form-text" placeholder="Search" value="" />
+            <button type="submit"><img src="//assets.ubuntu.com/sites/ubuntu/latest/u/img/search-white.svg" alt="Search" height="28" /></button>
+        </form>
+    </nav>
+</header>
+
+<div class="wrapper">
+<div id="main-content" class="inner-wrapper">
+    <div class="row no-border">
+        <div class="twelve-col">
+            <h1>Ubuntu security notices</h1>
+        </div>
+        
+<div class="eight-col">
+  <p>These are the Ubuntu security notices that affect the current supported releases of Ubuntu. These notices are also posted to the <a href="https://lists.ubuntu.com/mailman/listinfo/ubuntu-security-announce">ubuntu-security-announce</a> mailing list (<a href="https://lists.ubuntu.com/archives/ubuntu-security-announce/">list archive</a>). To report a security vulnerability in an Ubuntu package, please <a href="https://wiki.ubuntu.com/SecurityTeam/FAQ#Contact">contact</a> the Ubuntu Security Team. You may also be interested in learning about <a href="https://wiki.ubuntu.com/SecurityTeam/Policies">Ubuntu security policies</a>. For more details on a specific CVE or source package, please see the <a href="http://people.canonical.com/~ubuntu-security/cve/">Ubuntu CVE Tracker</a>.</p>
+  <p>You can also view the latest notices by subscribing to the <a href="/usn/rss.xml">RSS <img src="https://assets.ubuntu.com/v1/f727d471-feed.png" alt=""></a> or the <a href="/usn/atom.xml">Atom <img src="https://assets.ubuntu.com/v1/f727d471-feed.png" alt=""></a> feeds.</p>
+  <div class="eight-col">
+    <div class="right">
+      
+
+      Showing page 1 of 81 &nbsp;
+
+      
+      	<a href="?page=2">Next &gt;</a>
+      
+    </div>
+
+    <div class="left viewoptions">
+      Show: <a href="/usn/">All</a> &nbsp;
+      <form action="" method="get" name="releaselist" id="releaselisttop">
+          <select name="release">
+            <option value=""
+            	 selected="selected">
+            	Release:</option>
+
+            
+            <option value="artful">
+            	Ubuntu 17.10</option>
+            
+            <option value="zesty">
+            	Ubuntu 17.04</option>
+            
+            <option value="yakkety">
+            	Ubuntu 16.10</option>
+            
+            <option value="xenial">
+            	Ubuntu 16.04 LTS</option>
+            
+            <option value="wily">
+            	Ubuntu 15.10</option>
+            
+            <option value="vivid">
+            	Ubuntu 15.04</option>
+            
+            <option value="utopic">
+            	Ubuntu 14.10</option>
+            
+            <option value="trusty">
+            	Ubuntu 14.04 LTS</option>
+            
+            <option value="saucy">
+            	Ubuntu 13.10</option>
+            
+            <option value="raring">
+            	Ubuntu 13.04</option>
+            
+            <option value="quantal">
+            	Ubuntu 12.10</option>
+            
+            <option value="precise">
+            	Ubuntu 12.04 LTS</option>
+            
+            <option value="oneiric">
+            	Ubuntu 11.10</option>
+            
+            <option value="natty">
+            	Ubuntu 11.04</option>
+            
+            <option value="maverick">
+            	Ubuntu 10.10</option>
+            
+            <option value="lucid">
+            	Ubuntu 10.04 LTS</option>
+            
+            <option value="karmic">
+            	Ubuntu 9.10</option>
+            
+            <option value="jaunty">
+            	Ubuntu 9.04</option>
+            
+            <option value="intrepid">
+            	Ubuntu 8.10</option>
+            
+            <option value="hardy">
+            	Ubuntu 8.04 LTS</option>
+            
+            <option value="gutsy">
+            	Ubuntu 7.10</option>
+            
+            <option value="feisty">
+            	Ubuntu 7.04</option>
+            
+            <option value="edgy">
+            	Ubuntu 6.10</option>
+            
+            <option value="dapper">
+            	Ubuntu 6.06 LTS</option>
+            
+            <option value="breezy">
+            	Ubuntu 5.10</option>
+            
+            <option value="hoary">
+            	Ubuntu 5.04</option>
+            
+            <option value="warty">
+            	Ubuntu 4.10</option>
+            
+
+          </select>
+          <button type="submit" class="">show</button>
+      </form>
+    </div>
+  </div>
+
+
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3463-1/">USN-3463-1: Werkzeug vulnerability</a>
+        - 25th October 2017</h3>
+    <p>It was discovered that Werkzeug did not properly handle certain web scripts. A remote attacker could use this to inject arbitrary code via a field that contains an exception message.</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-10516">CVE-2016-10516</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3425-2/">USN-3425-2: Apache HTTP Server vulnerability</a>
+        - 24th October 2017</h3>
+    <p>USN-3425-1 fixed a vulnerability in Apache HTTP Server. This update provides the corresponding update for Ubuntu 12.04 ESM. Original advisory details: Hanno Böck discovered that the Apache HTTP Server incorrectly handled Limit directives in .htaccess files. In certain configurations, a remote attacker could possibly use this issue to read arbitrary ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-9798">CVE-2017-9798</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3388-2/">USN-3388-2: Subversion vulnerabilities</a>
+        - 24th October 2017</h3>
+    <p>USN-3388-1 fixed several vulnerabilities in Subversion. This update provides the corresponding update for Ubuntu 12.04 ESM. Ivan Zhakov discovered that Subversion did not properly handle some requests. A remote attacker could use this to cause a denial of service. (CVE-2016-2168) Original advisory details: Joern Schneeweisz discovered that Subversion did not ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-2167">CVE-2016-2167</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-2168">CVE-2016-2168</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-9800">CVE-2017-9800</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3411-2/">USN-3411-2: Bazaar vulnerability</a>
+        - 24th October 2017</h3>
+    <p>USN-3411-1 fixed a vulnerability in Bazaar. This update provides the corresponding update for Ubuntu 12.04 ESM. Original advisory details: Adam Collard discovered that Bazaar did not properly handle host names in &#39;bzr+ssh://&#39; URLs. A remote attacker could use this to construct a bazaar repository URL that when accessed could run ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14176">CVE-2017-14176</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3462-1/">USN-3462-1: Pacemaker vulnerabilities</a>
+        - 24th October 2017</h3>
+    <p>Jan Pokorný and Alain Moulle discovered that Pacemaker incorrectly handled the IPC interface. A local attacker could possibly use this issue to execute arbitrary code with root privileges. (CVE-2016-7035) Alain Moulle discovered that Pacemaker incorrectly handled authentication. A remote attacker could possibly use this issue to shut down connections, leading ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-7035">CVE-2016-7035</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-7797">CVE-2016-7797</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3454-2/">USN-3454-2: libffi vulnerability</a>
+        - 24th October 2017</h3>
+    <p>USN-3454-1 fixed a vulnerability in libffi. This update provides the corresponding update for Ubuntu 12.04 ESM. Original advisory details: It was discovered that libffi incorrectly enforced an executable stack. An attacker could possibly use this issue, in combination with another vulnerability, to facilitate executing arbitrary code.</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-1000376">CVE-2017-1000376</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3434-2/">USN-3434-2: Libidn vulnerability</a>
+        - 23rd October 2017</h3>
+    <p>USN-3434-1 fixed a vulnerability in Libidn. This update provides the corresponding update for Ubuntu 12.04 ESM. Original advisory details: It was discovered that Libidn incorrectly handled decoding certain digits. A remote attacker could use this issue to cause Libidn to crash, resulting in a denial of service, or possibly execute ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14062">CVE-2017-14062</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3441-2/">USN-3441-2: curl vulnerabilities</a>
+        - 23rd October 2017</h3>
+    <p>USN-3441-1 fixed several vulnerabilities in curl. This update provides the corresponding update for Ubuntu 12.04 ESM. Original advisory details: Daniel Stenberg discovered that curl incorrectly handled large floating point output. A remote attacker could use this issue to cause curl to crash, resulting in a denial of service, or possibly ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-9586">CVE-2016-9586</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-1000100">CVE-2017-1000100</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-1000254">CVE-2017-1000254</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-1000257">CVE-2017-1000257</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7407">CVE-2017-7407</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3458-2/">USN-3458-2: ICU vulnerability</a>
+        - 23rd October 2017</h3>
+    <p>USN-3458-1 fixed a vulnerability in ICU. This update provides the corresponding update for Ubuntu 12.04 ESM. Original advisory details: It was discovered that ICU incorrectly handled certain inputs. If an application using ICU processed crafted data, a remote attacker could possibly cause it to crash or potentially execute arbitrary code ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14952">CVE-2017-14952</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3458-1/">USN-3458-1: ICU vulnerability</a>
+        - 23rd October 2017</h3>
+    <p>It was discovered that ICU incorrectly handled certain inputs. If an application using ICU processed crafted data, a remote attacker could possibly cause it to crash or potentially execute arbitrary code with the privileges of the user invoking the program.</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14952">CVE-2017-14952</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3461-1/">USN-3461-1: NVIDIA graphics drivers vulnerabilities</a>
+        - 23rd October 2017</h3>
+    <p>It was discovered that the NVIDIA graphics drivers contained flaws in the kernel mode layer. A local attacker could use these issues to cause a denial of service or potentially escalate their privileges on the system.</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-6257">CVE-2017-6257</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-6259">CVE-2017-6259</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-6266">CVE-2017-6266</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-6267">CVE-2017-6267</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-6272">CVE-2017-6272</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3460-1/">USN-3460-1: WebKitGTK+ vulnerabilities</a>
+        - 23rd October 2017</h3>
+    <p>A large number of security issues were discovered in the WebKitGTK+ Web and JavaScript engines. If a user were tricked into viewing a malicious website, a remote attacker could exploit a variety of issues related to web browser security, including cross-site scripting attacks, denial of service attacks, and arbitrary code ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7087">CVE-2017-7087</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7089">CVE-2017-7089</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7090">CVE-2017-7090</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7091">CVE-2017-7091</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7092">CVE-2017-7092</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7093">CVE-2017-7093</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7095">CVE-2017-7095</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7096">CVE-2017-7096</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7098">CVE-2017-7098</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7100">CVE-2017-7100</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7102">CVE-2017-7102</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7104">CVE-2017-7104</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7107">CVE-2017-7107</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7109">CVE-2017-7109</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7111">CVE-2017-7111</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7117">CVE-2017-7117</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7120">CVE-2017-7120</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3459-1/">USN-3459-1: MySQL vulnerabilities</a>
+        - 23rd October 2017</h3>
+    <p>Multiple security issues were discovered in MySQL and this update includes new upstream MySQL versions to fix these issues. MySQL has been updated to 5.5.58 in Ubuntu 14.04 LTS. Ubuntu 16.04 LTS, Ubuntu 17.04 and Ubuntu 17.10 have been updated to MySQL 5.7.20. In addition to security fixes, the updated ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-10155">CVE-2017-10155</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-10165">CVE-2017-10165</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-10167">CVE-2017-10167</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-10227">CVE-2017-10227</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-10268">CVE-2017-10268</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-10276">CVE-2017-10276</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-10283">CVE-2017-10283</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-10286">CVE-2017-10286</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-10294">CVE-2017-10294</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-10311">CVE-2017-10311</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-10313">CVE-2017-10313</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-10314">CVE-2017-10314</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-10320">CVE-2017-10320</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-10378">CVE-2017-10378</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-10379">CVE-2017-10379</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-10384">CVE-2017-10384</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3457-1/">USN-3457-1: curl vulnerability</a>
+        - 23rd October 2017</h3>
+    <p>Brian Carpenter discovered that curl incorrectly handled IMAP FETCH response lines. A remote attacker could use this issue to cause curl to crash, resulting in a denial of service, or possibly execute arbitrary code.</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-1000257">CVE-2017-1000257</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3456-1/">USN-3456-1: X.Org X server vulnerabilities</a>
+        - 17th October 2017</h3>
+    <p>It was discovered that the X.Org X server incorrectly handled certain lengths. An attacker able to connect to an X server, either locally or remotely, could use these issues to crash the server, or possibly execute arbitrary code.</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-12176">CVE-2017-12176</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-12177">CVE-2017-12177</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-12178">CVE-2017-12178</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-12179">CVE-2017-12179</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-12180">CVE-2017-12180</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-12181">CVE-2017-12181</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-12182">CVE-2017-12182</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-12183">CVE-2017-12183</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-12184">CVE-2017-12184</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-12185">CVE-2017-12185</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-12186">CVE-2017-12186</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-12187">CVE-2017-12187</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3455-1/">USN-3455-1: wpa_supplicant and hostapd vulnerabilities</a>
+        - 16th October 2017</h3>
+    <p>Mathy Vanhoef discovered that wpa_supplicant and hostapd incorrectly handled WPA2. A remote attacker could use this issue with key reinstallation attacks to obtain sensitive information. (CVE-2017-13077, CVE-2017-13078, CVE-2017-13079, CVE-2017-13080, CVE-2017-13081, CVE-2017-13082, CVE-2017-13086, CVE-2017-13087, CVE-2017-13088) Imre Rad discovered that wpa_supplicant and hostapd incorrectly handled invalid characters in passphrase parameters. A remote ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-4476">CVE-2016-4476</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-4477">CVE-2016-4477</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13077">CVE-2017-13077</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13078">CVE-2017-13078</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13079">CVE-2017-13079</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13080">CVE-2017-13080</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13081">CVE-2017-13081</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13082">CVE-2017-13082</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13086">CVE-2017-13086</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13087">CVE-2017-13087</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13088">CVE-2017-13088</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3454-1/">USN-3454-1: libffi vulnerability</a>
+        - 12th October 2017</h3>
+    <p>It was discovered that libffi incorrectly enforced an executable stack. An attacker could possibly use this issue, in combination with another vulnerability, to facilitate executing arbitrary code.</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-1000376">CVE-2017-1000376</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3453-1/">USN-3453-1: X.Org X server vulnerabilities</a>
+        - 12th October 2017</h3>
+    <p>Michal Srb discovered that the X.Org X server incorrectly handled shared memory segments. An attacker able to connect to an X server, either locally or remotely, could use this issue to crash the server, or possibly replace shared memory segments of other X clients in the same session. (CVE-2017-13721) Michal ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13721">CVE-2017-13721</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13723">CVE-2017-13723</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3452-1/">USN-3452-1: Ceph vulnerabilities</a>
+        - 11th October 2017</h3>
+    <p>It was discovered that Ceph incorrectly handled the handle_command function. A remote authenticated user could use this issue to cause Ceph to crash, resulting in a denial of service. (CVE-2016-5009) Rahul Aggarwal discovered that Ceph incorrectly handled the authenticated-read ACL. A remote attacker could possibly use this issue to list ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-5009">CVE-2016-5009</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-7031">CVE-2016-7031</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-8626">CVE-2016-8626</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-9579">CVE-2016-9579</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3451-1/">USN-3451-1: OpenStack Swift vulnerabilities</a>
+        - 11th October 2017</h3>
+    <p>It was discovered that OpenStack Swift incorrectly handled tempurls. A remote authenticated user in possession of a tempurl key authorized for PUT could retrieve other objects in the same Swift account. (CVE-2015-5223) Romain Le Disez and Örjan Persson discovered that OpenStack Swift incorrectly closed client connections. A remote attacker could ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2015-5223">CVE-2015-5223</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-0737">CVE-2016-0737</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-0738">CVE-2016-0738</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3450-1/">USN-3450-1: Open vSwitch vulnerabilities</a>
+        - 11th October 2017</h3>
+    <p>Bhargava Shastry discovered that Open vSwitch incorrectly handled certain OFP messages. A remote attacker could possibly use this issue to cause Open vSwitch to crash, resulting in a denial of service. (CVE-2017-9214) It was discovered that Open vSwitch incorrectly handled certain OpenFlow role messages. A remote attacker could possibly use ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-9214">CVE-2017-9214</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-9263">CVE-2017-9263</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-9264">CVE-2017-9264</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-9265">CVE-2017-9265</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3449-1/">USN-3449-1: OpenStack Nova vulnerabilities</a>
+        - 11th October 2017</h3>
+    <p>George Shuklin discovered that OpenStack Nova incorrectly handled the migration process. A remote authenticated user could use this issue to consume resources, resulting in a denial of service. (CVE-2015-3241) George Shuklin and Tushar Patil discovered that OpenStack Nova incorrectly handled deleting instances. A remote authenticated user could use this issue ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2015-3241">CVE-2015-3241</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2015-3280">CVE-2015-3280</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2015-5162">CVE-2015-5162</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2015-7548">CVE-2015-7548</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2015-7713">CVE-2015-7713</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2015-8749">CVE-2015-8749</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-2140">CVE-2016-2140</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3448-1/">USN-3448-1: OpenStack Keystone vulnerability</a>
+        - 11th October 2017</h3>
+    <p>Boris Bobrov discovered that OpenStack Keystone incorrectly handled federation mapping when there are rules in which group-based assignments are not used. A remote authenticated user may receive all the roles assigned to a project regardless of the federation mapping, contrary to expectations.</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-2673">CVE-2017-2673</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3447-1/">USN-3447-1: OpenStack Horizon vulnerability</a>
+        - 11th October 2017</h3>
+    <p>Beth Lancaster and Brandon Sawyers discovered that OpenStack Horizon was incorrect protected against cross-site scripting (XSS) attacks. A remote authenticated user could use this issue to inject web script or HTML in a dashboard form.</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-4428">CVE-2016-4428</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3446-1/">USN-3446-1: OpenStack Glance vulnerabilities</a>
+        - 11th October 2017</h3>
+    <p>Hemanth Makkapati discovered that OpenStack Glance incorrectly handled access restrictions. A remote authenticated user could use this issue to change the status of images, contrary to access restrictions. (CVE-2015-5251) Mike Fedosin and Alexei Galkin discovered that OpenStack Glance incorrectly handled the storage quota. A remote authenticated user could use this ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2015-5251">CVE-2015-5251</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2015-5286">CVE-2015-5286</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-0757">CVE-2016-0757</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3436-1/">USN-3436-1: Thunderbird vulnerabilities</a>
+        - 11th October 2017</h3>
+    <p>Multiple security issues were discovered in Thunderbird. If a user were tricked in to opening a specially crafted website in a browsing-like context, an attacker could potentially exploit these to read uninitialized memory, bypass phishing and malware protection, conduct cross-site scripting (XSS) attacks, cause a denial of service via application ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7793">CVE-2017-7793</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7805">CVE-2017-7805</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7810">CVE-2017-7810</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7814">CVE-2017-7814</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7818">CVE-2017-7818</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7819">CVE-2017-7819</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7823">CVE-2017-7823</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7824">CVE-2017-7824</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3445-2/">USN-3445-2: Linux kernel (Trusty HWE) vulnerabilities</a>
+        - 11th October 2017</h3>
+    <p>USN-3445-1 fixed vulnerabilities in the Linux kernel for Ubuntu 14.04 LTS. This update provides the corresponding updates for the Linux Hardware Enablement (HWE) kernel from Ubuntu 14.04 LTS for Ubuntu 12.04 ESM. Eyal Itkin discovered that the IP over IEEE 1394 (FireWire) implementation in the Linux kernel contained a buffer ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-8633">CVE-2016-8633</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14106">CVE-2017-14106</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3443-3/">USN-3443-3: Linux kernel (GCP) vulnerability</a>
+        - 11th October 2017</h3>
+    <p>Andrey Konovalov discovered that a divide-by-zero error existed in the TCP stack implementation in the Linux kernel. A local attacker could use this to cause a denial of service (system crash). (CVE-2017-14106)</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14106">CVE-2017-14106</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3444-2/">USN-3444-2: Linux kernel (Xenial HWE) vulnerabilities</a>
+        - 10th October 2017</h3>
+    <p>USN-3444-1 fixed vulnerabilities in the Linux kernel for Ubuntu 16.04 LTS. This update provides the corresponding updates for the Linux Hardware Enablement (HWE) kernel from Ubuntu 16.04 LTS for Ubuntu 14.04 LTS. Jan H. Schönherr discovered that the Xen subsystem did not properly handle block IO merges correctly in some ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-12134">CVE-2017-12134</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14106">CVE-2017-14106</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14140">CVE-2017-14140</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3445-1/">USN-3445-1: Linux kernel vulnerabilities</a>
+        - 10th October 2017</h3>
+    <p>Eyal Itkin discovered that the IP over IEEE 1394 (FireWire) implementation in the Linux kernel contained a buffer overflow when handling fragmented packets. A remote attacker could use this to possibly execute arbitrary code with administrative privileges. (CVE-2016-8633) Andrey Konovalov discovered that a divide-by-zero error existed in the TCP stack ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-8633">CVE-2016-8633</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14106">CVE-2017-14106</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3444-1/">USN-3444-1: Linux kernel vulnerabilities</a>
+        - 10th October 2017</h3>
+    <p>Jan H. Schönherr discovered that the Xen subsystem did not properly handle block IO merges correctly in some situations. An attacker in a guest vm could use this to cause a denial of service (host crash) or possibly gain administrative privileges in the host. (CVE-2017-12134) Andrey Konovalov discovered that a ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-12134">CVE-2017-12134</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14106">CVE-2017-14106</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14140">CVE-2017-14140</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3424-2/">USN-3424-2: libxml2 vulnerabilities</a>
+        - 10th October 2017</h3>
+    <p>USN-3424-1 fixed several vulnerabilities in libxml2. This update provides the corresponding update for Ubuntu 12.04 ESM. Original advisory details: It was discovered that a type confusion error existed in libxml2. An attacker could use this to specially construct XML data that could cause a denial of service or possibly execute ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-0663">CVE-2017-0663</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7375">CVE-2017-7375</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7376">CVE-2017-7376</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-9047">CVE-2017-9047</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-9048">CVE-2017-9048</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-9049">CVE-2017-9049</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-9050">CVE-2017-9050</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3443-2/">USN-3443-2: Linux kernel (HWE) vulnerabilities</a>
+        - 10th October 2017</h3>
+    <p>USN-3443-1 fixed vulnerabilities in the Linux kernel for Ubuntu 17.04. This update provides the corresponding updates for the Linux Hardware Enablement (HWE) kernel from Ubuntu 17.04 for Ubuntu 16.04 LTS. It was discovered that on the PowerPC architecture, the kernel did not properly sanitize the signal stack when handling sigreturn(). ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-1000255">CVE-2017-1000255</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14106">CVE-2017-14106</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3443-1/">USN-3443-1: Linux kernel vulnerabilities</a>
+        - 10th October 2017</h3>
+    <p>It was discovered that on the PowerPC architecture, the kernel did not properly sanitize the signal stack when handling sigreturn(). A local attacker could use this to cause a denial of service (system crash) or possibly execute arbitrary code. (CVE-2017-1000255) Andrey Konovalov discovered that a divide-by-zero error existed in the ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-1000255">CVE-2017-1000255</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14106">CVE-2017-14106</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3442-1/">USN-3442-1: libXfont vulnerabilities</a>
+        - 10th October 2017</h3>
+    <p>It was discovered that libXfont incorrectly handled certain patterns in PatternMatch. A local attacker could use this issue to cause libXfont to crash, resulting in a denial of service, or possibly obtain sensitive information. (CVE-2017-13720) It was discovered that libXfont incorrectly handled certain malformed PCF files. A local attacker could ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13720">CVE-2017-13720</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-13722">CVE-2017-13722</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3441-1/">USN-3441-1: curl vulnerabilities</a>
+        - 10th October 2017</h3>
+    <p>Daniel Stenberg discovered that curl incorrectly handled large floating point output. A remote attacker could use this issue to cause curl to crash, resulting in a denial of service, or possibly execute arbitrary code. This issue only affected Ubuntu 14.04 LTS and Ubuntu 16.04 LTS. (CVE-2016-9586) Even Rouault discovered that ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2016-9586">CVE-2016-9586</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-1000100">CVE-2017-1000100</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-1000101">CVE-2017-1000101</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-1000254">CVE-2017-1000254</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7407">CVE-2017-7407</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3440-1/">USN-3440-1: poppler vulnerabilities</a>
+        - 6th October 2017</h3>
+    <p>It was discovered that Poppler incorrectly handled certain files. If a user or automated system were tricked into opening a crafted PDF file, an attacker could cause a denial of service. (CVE-2017-14518, CVE-2017-14520, CVE-2017-14617, CVE-2017-14929, CVE-2017-14975, CVE-2017-14977) It was discovered that Poppler incorrectly handled certain files. If a user or ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14518">CVE-2017-14518</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14520">CVE-2017-14520</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14617">CVE-2017-14617</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14926">CVE-2017-14926</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14928">CVE-2017-14928</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14929">CVE-2017-14929</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14975">CVE-2017-14975</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14977">CVE-2017-14977</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-9776">CVE-2017-9776</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3439-1/">USN-3439-1: Ruby vulnerabilities</a>
+        - 5th October 2017</h3>
+    <p>It was discovered that Ruby incorrectly handled certain inputs. An attacker could use this to cause a buffer overrun. (CVE-2017-0898) Yusuke Endoh discovered that Ruby incorrectly handled certain files. An attacker could use this to execute terminal escape sequences. (CVE-2017-0899) Yusuke Endoh discovered that Ruby incorrectly handled certain inputs. An ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-0898">CVE-2017-0898</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-0899">CVE-2017-0899</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-0900">CVE-2017-0900</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-0901">CVE-2017-0901</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-10784">CVE-2017-10784</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14033">CVE-2017-14033</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14064">CVE-2017-14064</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3438-1/">USN-3438-1: Git vulnerability</a>
+        - 5th October 2017</h3>
+    <p>It was discovered that Git incorrectly handled certain subcommands such as cvsserver. A remote attacker could possibly use this issue via shell metacharacters in modules names to execute arbitrary code. This update also removes the cvsserver subcommand from git-shell by default.</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14867">CVE-2017-14867</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3435-2/">USN-3435-2: Firefox regression</a>
+        - 4th October 2017</h3>
+    <p>USN-3435-1 fixed vulnerabilities in Firefox. The update caused the Flash plugin to crash in some circumstances. This update fixes the problem. We apologize for the inconvenience. Original advisory details: Multiple security issues were discovered in Firefox. If a user were tricked in to opening a specially crafted website, an attacker ...</p>
+    <p>
+    
+            <a href="https://launchpad.net/bugs/1720908">LP: 1720908</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3437-1/">USN-3437-1: OCaml vulnerability</a>
+        - 3rd October 2017</h3>
+    <p>Radek Micek discovered that OCaml incorrectly handled sign extensions. A remote attacker could use this issue to cause applications using OCaml to crash, to possibly obtain sensitive information, or to possibly execute arbitrary code.</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2015-8869">CVE-2015-8869</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3430-2/">USN-3430-2: Dnsmasq vulnerabilities</a>
+        - 3rd October 2017</h3>
+    <p>USN-3430-1 fixed several vulnerabilities in Dnsmasq. This update provides the corresponding update for Ubuntu 12.04 ESM. Original advisory details: Felix Wilhelm, Fermin J. Serna, Gabriel Campana and Kevin Hamacher discovered that Dnsmasq incorrectly handled DNS requests. A remote attacker could use this issue to cause Dnsmasq to crash, resulting in ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14491">CVE-2017-14491</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14492">CVE-2017-14492</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14493">CVE-2017-14493</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14494">CVE-2017-14494</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14495">CVE-2017-14495</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14496">CVE-2017-14496</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3435-1/">USN-3435-1: Firefox vulnerabilities</a>
+        - 2nd October 2017</h3>
+    <p>Multiple security issues were discovered in Firefox. If a user were tricked in to opening a specially crafted website, an attacker could potentially exploit these to read uninitialized memory, obtain sensitive information, bypass phishing and malware protection, spoof the origin in modal dialogs, conduct cross-site scripting (XSS) attacks, cause a ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7793">CVE-2017-7793</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7805">CVE-2017-7805</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7810">CVE-2017-7810</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7811">CVE-2017-7811</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7812">CVE-2017-7812</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7813">CVE-2017-7813</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7814">CVE-2017-7814</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7815">CVE-2017-7815</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7816">CVE-2017-7816</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7818">CVE-2017-7818</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7819">CVE-2017-7819</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7820">CVE-2017-7820</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7821">CVE-2017-7821</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7822">CVE-2017-7822</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7823">CVE-2017-7823</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7824">CVE-2017-7824</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3434-1/">USN-3434-1: Libidn vulnerability</a>
+        - 2nd October 2017</h3>
+    <p>It was discovered that Libidn incorrectly handled decoding certain digits. A remote attacker could use this issue to cause Libidn to crash, resulting in a denial of service, or possibly execute arbitrary code.</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14062">CVE-2017-14062</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3433-1/">USN-3433-1: poppler vulnerabilities</a>
+        - 2nd October 2017</h3>
+    <p>It was discovered that Poppler incorrectly handled certain files. If a user or automated system were tricked into opening a crafted PDF file, an attacker could cause a denial service. This issue only affected Ubuntu 17.04. (CVE-2017-14517) It was discovered that Poppler incorrectly handled certain files. If a user or ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14517">CVE-2017-14517</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14519">CVE-2017-14519</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3430-1/">USN-3430-1: Dnsmasq vulnerabilities</a>
+        - 2nd October 2017</h3>
+    <p>Felix Wilhelm, Fermin J. Serna, Gabriel Campana and Kevin Hamacher discovered that Dnsmasq incorrectly handled DNS requests. A remote attacker could use this issue to cause Dnsmasq to crash, resulting in a denial of service, or possibly execute arbitrary code. (CVE-2017-14491) Felix Wilhelm, Fermin J. Serna, Gabriel Campana and Kevin ...</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14491">CVE-2017-14491</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14492">CVE-2017-14492</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14493">CVE-2017-14493</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14494">CVE-2017-14494</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14495">CVE-2017-14495</a>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14496">CVE-2017-14496</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3432-1/">USN-3432-1: ca-certificates update</a>
+        - 2nd October 2017</h3>
+    <p>The ca-certificates package contained outdated CA certificates. This update refreshes the included certificates to those contained in the 20170717 package.</p>
+    <p>
+    
+            <a href="https://launchpad.net/bugs/1719851">LP: 1719851</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3431-1/">USN-3431-1: NSS vulnerability</a>
+        - 2nd October 2017</h3>
+    <p>Martin Thomson discovered that NSS incorrectly generated handshake hashes. A remote attacker could use this issue to cause NSS to crash, resulting in a denial of service, or possibly execute arbitrary code.</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7805">CVE-2017-7805</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3429-1/">USN-3429-1: Libplist vulnerability</a>
+        - 25th September 2017</h3>
+    <p>Wang Junjie discovered that Libplist incorrectly handled certain files. If a user were tricked into opening a crafted file, an attacker could possibly use this to cause a crash or denial or service.</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-7982">CVE-2017-7982</a>
+    
+    </p>
+  </div>
+  
+  <div class="eight-col notice">
+    <h3><a href="/usn/usn-3428-1/">USN-3428-1: Emacs vulnerability</a>
+        - 21st September 2017</h3>
+    <p>Charles A. Roelli discovered that Emacs incorrectly handled certain files. If a user were tricked into opening a specially crafted file (e.g., email messages in gnus), an attacker could possibly use this to execute arbitrary code.</p>
+    <p>
+    
+            <a href="http://people.ubuntu.com/~ubuntu-security/cve/CVE-2017-14482">CVE-2017-14482</a>
+    
+    </p>
+  </div>
+  
+
+  <div class="eight-col">
+
+    <div class="right">
+      
+
+      Showing page 1 of 81 &nbsp;
+
+      
+          <a href="?page=2">Next &gt;</a>
+      
+    </div>
+
+    <div class="left viewoptions">
+      Show: <a href="/usn/">All</a> &nbsp;
+      <form action="" method="get" name="releaselist" id="releaselistbottom">
+          <select name="release">
+            <option value=""
+            	 selected="selected">
+            	Release:</option>
+
+            
+            <option value="artful">
+            	Ubuntu 17.10</option>
+            
+            <option value="zesty">
+            	Ubuntu 17.04</option>
+            
+            <option value="yakkety">
+            	Ubuntu 16.10</option>
+            
+            <option value="xenial">
+            	Ubuntu 16.04 LTS</option>
+            
+            <option value="wily">
+            	Ubuntu 15.10</option>
+            
+            <option value="vivid">
+            	Ubuntu 15.04</option>
+            
+            <option value="utopic">
+            	Ubuntu 14.10</option>
+            
+            <option value="trusty">
+            	Ubuntu 14.04 LTS</option>
+            
+            <option value="saucy">
+            	Ubuntu 13.10</option>
+            
+            <option value="raring">
+            	Ubuntu 13.04</option>
+            
+            <option value="quantal">
+            	Ubuntu 12.10</option>
+            
+            <option value="precise">
+            	Ubuntu 12.04 LTS</option>
+            
+            <option value="oneiric">
+            	Ubuntu 11.10</option>
+            
+            <option value="natty">
+            	Ubuntu 11.04</option>
+            
+            <option value="maverick">
+            	Ubuntu 10.10</option>
+            
+            <option value="lucid">
+            	Ubuntu 10.04 LTS</option>
+            
+            <option value="karmic">
+            	Ubuntu 9.10</option>
+            
+            <option value="jaunty">
+            	Ubuntu 9.04</option>
+            
+            <option value="intrepid">
+            	Ubuntu 8.10</option>
+            
+            <option value="hardy">
+            	Ubuntu 8.04 LTS</option>
+            
+            <option value="gutsy">
+            	Ubuntu 7.10</option>
+            
+            <option value="feisty">
+            	Ubuntu 7.04</option>
+            
+            <option value="edgy">
+            	Ubuntu 6.10</option>
+            
+            <option value="dapper">
+            	Ubuntu 6.06 LTS</option>
+            
+            <option value="breezy">
+            	Ubuntu 5.10</option>
+            
+            <option value="hoary">
+            	Ubuntu 5.04</option>
+            
+            <option value="warty">
+            	Ubuntu 4.10</option>
+            
+
+          </select>
+          <button type="submit" class="">show</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="prepend-one three-col last-col">
+  <p><a href="/usn/rss.xml">Subscribe to the RSS feed&nbsp;&rsaquo;</a></p>
+</div>
+
+
+    </div>
+</div>
+</div>
+
+<footer class="global clearfix">
+
+<div class="footer-c">
+    <p class="top-link"><a href="#">Back to top</a></p>
+</div>
+<nav id="main-navigation" role="navigation" class="clearfix">
+<div class="footer-a">
+    <div class="clearfix">
+        <ul>
+            <li class="secondary-cloud"><h2><a href="/cloud/">Cloud</a></h2>
+                    <ul class="second-level-nav">
+        <li class="first active"><a href="/cloud">Overview</a></li>
+        <li><a href="/cloud/ubuntu-openstack">Ubuntu OpenStack</a></li>
+        <li><a href="/cloud/public-cloud">Public cloud</a></li>
+        <li><a href="/cloud/tools">Cloud tools</a></li>
+        <li><a href="/cloud/management">Cloud management</a></li>
+        <li><a href="/cloud/ecosystem">Ecosystem</a></li>
+        <li><a href="/cloud/labs">Cloud labs</a></li>
+    </ul>
+
+            </li>
+            <li class="secondary-server"><h2><a href="/server/">Server</a></h2>
+                    <ul class="second-level-nav">
+        <li class="first"><a href="/server">Overview</a></li>
+        <li><a href="/server/management">Server management</a></li>
+        <li><a href="/server/hyperscale">Hyperscale</a></li>
+    </ul>
+
+            </li>
+            <li class="secondary-desktop"><h2><a href="/desktop/" class="active-trail">Desktop</a></h2>
+                    <ul class="second-level-nav">
+        <li class="first"><a href="/desktop">Overview</a></li>
+        <li><a href="/desktop/features">Features</a></li>
+        <li><a href="/desktop/business">For business</a></li>
+        <li><a href="/desktop/developers">For developers</a></li>
+        <li><a href="/desktop/take-the-tour">Take the tour</a></li>
+        <li><a href="/desktop/management">Desktop management</a></li>
+        <li><a href="/desktop/ubuntu-kylin">Ubuntu Kylin</a></li>
+    </ul>
+            </li>
+            <li class="secondary-phone"><h2><a href="/phone/">Phone</a></h2>
+                    <ul class="second-level-nav">
+        <li class="first"><a href="/phone">Overview</a></li>
+        <li><a href="/phone/features" >Features</a></li>
+        <li><a href="/phone/scopes" >Scopes</a></li>
+        <li><a href="/phone/app-ecosystem">App ecosystem</a></li>
+        <li><a href="/phone/operators-and-oems" >Operators and OEMs</a></li>
+        <li><a href="/phone/carrier-advisory-group">Carrier Advisory Group</a></li>
+        <li><a href="/phone/ubuntu-for-android">Ubuntu for Android</a></li>
+    </ul>
+
+            </li>
+            <li class="secondary-tablet"><h2><a href="/tablet/">Tablet</a></h2>
+                    <ul class="second-level-nav">
+        <li class="first"><a href="/tablet">Design</a></li>
+        <li><a href="/tablet/operators-and-oems">Operators and OEMs</a></li>
+        <li><a href="/tablet/app-ecosystem">App ecosystem</a></li>
+    </ul>
+
+            </li>
+            <li class="secondary-tv"><h2><a href="/tv/">TV</a></h2>
+                    <ul class="second-level-nav">
+        <li class="first"><a href="/tv">Overview</a></li>
+        <li><a href="/tv/experience">Experience</a></li>
+        <li><a href="/tv/industry">Industry</a></li>
+        <li><a href="/tv/contributors">Contributors</a></li>
+        <li><a href="/tv/features-and-specs">Features and specs</a></li>
+        <li><a href="/tv/commercial-info">Commercial info</a></li>
+    </ul>
+
+            </li>
+            <li class="secondary-management last-item"><h2><a href="/management/">Management</a></h2>
+                    <ul class="second-level-nav">
+        <li class="first"><a href="/management">Overview</a></li>
+        <li><a href="/management/landscape-features">Landscape features</a></li>
+        <li><a href="/management/working-with-landscape">Working with Landscape</a></li>
+        <li><a href="/management/return-on-investment">Return on investment</a></li>
+        <li><a href="/management/compliance">Compliance</a></li>
+        <li><a href="/management/ubuntu-advantage">Ubuntu Advantage</a></li>
+    </ul>
+            </li>
+        </ul>
+    </div>
+</div><!-- /.footer-a -->
+<div class="footer-b inline-lists">
+    <ul class="clearfix">
+        <li><h2><a href="/download/">Download</a></h2>
+                <ul class="second-level-nav">
+        <li class="first"><a href="/download">Overview</a></li>
+        <li><a href="/download/cloud">Cloud</a></li>
+        <li><a href="/download/server">Server</a></li>
+        <li><a href="/download/desktop">Desktop</a></li>
+        <li><a href="/download/ubuntu-kylin">Ubuntu Kylin</a></li>
+        <li><a href="/download/alternative-downloads">Alternative downloads</a></li>
+    </ul>
+        </li>
+        <li><h2><a href="/support/">Support</a></h2>
+                <ul class="second-level-nav">
+        <li class="first"><a href="/support">Overview</a></li>
+        <li><a href="http://www.ubuntu.com/usn/">Security notices</a></li>
+    </ul>
+        </li>
+        <li><h2><a href="/partners/">Partners</a></h2>
+                <ul class="second-level-nav">
+        <li class="first"><a href="/partners">Overview</a></li>
+        <li class=""><a href="/partners/find-a-partner">Find a partner</a></li>
+        <li class=""><a href="/partners/ubuntu-certified">Ubuntu Certified</a></li>
+        <li class=""><a href="/partners/partner-programmes">Partner programmes</a></li>
+        <li class=""><a href="/partners/partner-services">Partner services</a></li>
+        <li class=""><a href="/partners/backed-by-canonical">Backed by Canonical</a></li>
+        <li class=""><a href="/partners/contact-us">Contact Canonical</a></li>
+    </ul>
+        </li>
+        <li><h2><a href="/about/">About</a></h2>
+            <ul class="second-level-nav">
+                <li><a href="/about/about-ubuntu">About Ubuntu</a></li>
+                <li><a href="http://www.canonical.com/careers">Careers</a></li>
+                <li><a href="/about/canonical-and-ubuntu">Canonical and Ubuntu</a></li>
+                <li><a accesskey="7" href="/about/contact-us">Contact us</a></li>
+                <li><a accesskey="2" href="http://insights.ubuntu.com/feed/">Canonical news feed</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+</nav>
+<div class="legal clearfix">
+ <p class="twelve-col">&copy; 2014 Canonical Ltd. Ubuntu and Canonical are registered trademarks of Canonical Ltd.</p>
+ <ul class="inline clear">
+     <li><a href="/legal">Legal information</a></li>
+     <li><a href="https://bugs.launchpad.net/ubuntu-website-content/+filebug">Report a bug</a></li>
+</ul>
+<span class="accessibility-aid"><a href="#">Got to the top of the page</a></span>
+</div><!-- /.legal -->
+</footer>
+
+        <script src="//assets.ubuntu.com/sites/ubuntu/latest/u/js/plugins/yui-combined.min.js"></script>
+
+        
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-1018242-4']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+        
+
+        <script>
+            if(!core){ var core = {}; }
+            core.globalPrepend = 'body';
+        </script>
+
+        <script src="//assets.ubuntu.com/sites/guidelines/js/responsive/core.js"></script>
+        <script src="//assets.ubuntu.com/sites/ubuntu/latest/u/js/global.js"></script>
+        <script src="http://assets.ubuntu.com/sites/ubuntu/latest/u/js/scratch.js"></script>
+        
+<script type="text/javascript">
+YUI().use('node', function(Y) {
+    Y.all(".viewoptions button").addClass("hide");
+    Y.all(".viewoptions select").on('change', function (e) {
+        e.currentTarget.get('parentNode').submit();
+    });
+});
+</script>
+
+    </body>
+</html>
