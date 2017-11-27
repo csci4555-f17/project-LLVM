@@ -142,6 +142,11 @@ class Flattener():
             (assmt_instrs, assmt_var) = self.assign_new(t.Neg(slast))
             return (s + assmt_instrs, assmt_var)
 
+        elif isinstance(n, LLVMRuntimeNeg):
+            (s, slast) = self.descend(n.expr)
+            (assmt_instrs, assmt_var) = self.assign_new(t.LLVMRuntimeNeg(slast))
+            return (s + assmt_instrs, assmt_var)
+
         elif isinstance(n, Const):
             if isinstance(n.value, str):
                 return self.descend(n.value)

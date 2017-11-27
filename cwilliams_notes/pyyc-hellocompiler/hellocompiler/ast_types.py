@@ -277,3 +277,13 @@ class LLVMRuntimeAdd(Node):
     
     def __str__(self):
         return "llvm_runtime_add(%s, %s)" % (self.left, self.right)
+
+class LLVMRuntimeNeg(Node):
+    def __init__(self, expr):
+        self.expr = expr
+    
+    def __repr__(self):
+        return "llvm_runtime_neg(%s)" % (self.expr)
+    
+    def __str__(self):
+        return "llvm_runtime_neg(%s)" % (self.expr)

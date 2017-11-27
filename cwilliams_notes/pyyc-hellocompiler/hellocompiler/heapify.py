@@ -63,6 +63,9 @@ def heapify(ast_):
         if isinstance(n, LLVMRuntimeAdd):
             return LLVMRuntimeAdd(descend(n.left), descend(n.right))
 
+        if isinstance(n, LLVMRuntimeNeg):
+            return LLVMRuntimeNeg(descend(n.expr))
+
         if isinstance(n, Printnl):
             nodes = n.nodes
             dest = n.dest

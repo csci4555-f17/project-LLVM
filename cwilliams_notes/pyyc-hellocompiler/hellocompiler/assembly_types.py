@@ -24,6 +24,16 @@ class LLVMRuntimeAdd(SimpleExpression):
     def __repr__(self):
         return "LLVMRuntimeAdd(%s, %s)" % (self.left, self.right)
 
+class LLVMRuntimeNeg(SimpleExpression):
+    def __init__(self, val):
+        self.val = val 
+
+    def __str__(self):
+        return "LLVMRuntimeNeg(%s)" % (self.val)
+
+    def __repr__(self):
+        return "LLVMRuntimeNeg(%s)" % (self.val)
+
 class Sub(SimpleExpression):
     def __init__(self, left, right):
         self.left = left 

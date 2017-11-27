@@ -95,14 +95,7 @@ def explicate(ast_):
             return Discard(descend(expr))
 
         if isinstance(n, UnarySub):
-            v = descend(n.expr)
-
-            def result(val):
-                return IfExp(InjectFrom('bool', CompareTag(val, INT_TYPE)),
-                             InjectFrom('int', UnarySub(ProjectTo('int', val))),
-                             InjectFrom('int', UnarySub(ProjectTo('bool', val))))
-
-            return letify(v, result)
+            return LLVMRuntimeNeg(descend(n.expr))
 
         if isinstance(n, AssAttr):
             return n

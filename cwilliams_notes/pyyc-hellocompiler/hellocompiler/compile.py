@@ -52,5 +52,5 @@ if __name__ == "__main__":
 
         b = builder.Builder(flat_code)
         b.build()
-        print b.module
+#        print b.module
         ct.compile(str(b.module))
