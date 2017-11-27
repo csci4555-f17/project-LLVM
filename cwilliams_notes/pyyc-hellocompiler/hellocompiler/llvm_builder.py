@@ -235,7 +235,7 @@ class Builder():
             project_big = self.create_project_big(builder)
             negate = self.create_negate(builder)
 
-            func_type = ir.FunctionType(Builder.integer, (Builder.integer, Builder.integer))
+            func_type = ir.FunctionType(Builder.longint, (Builder.longint, Builder.longint))
             func = ir.Function(self.module, func_type, name='llvm_runtime_add')
             block = func.append_basic_block(name="entry")
             this_builder = ir.IRBuilder(block)
@@ -276,7 +276,7 @@ class Builder():
                             res19 = this_builder.call(inject_big, [res18])
                             this_builder.ret(res19)
             # Should never reach this
-            this_builder.ret(Builder.zero)
+            this_builder.ret(ir.Constant(Builder.longint, 0))
         
             self.variable_mapping['llvm_runtime_add'] = func
             return func
