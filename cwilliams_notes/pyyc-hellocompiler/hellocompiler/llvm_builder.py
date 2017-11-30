@@ -79,6 +79,10 @@ class Builder():
                         res = self.variable_mapping[exp]
                     elif isinstance(exp, vv.BoolValue):
                         res = ir.Constant(Builder.integer, int(exp.v))
+                    elif isinstance(exp, T.List):
+                        length = self.variable_mapping[exp.length]
+                        func = self.create_create_list(builder)
+                        res = builder.call(func, [length])
                     else:
                         raise Exception("unsupported ", exp)
 
@@ -96,11 +100,36 @@ class Builder():
                             iterate(builder, n.then)
                         with otherwise:
                             iterate(builder, n.else_)
+                elif isinstance(n, T.SubscriptAssign):
+                    func = self.create_set_subscript(builder)
+                    c = self.variable_mapping[n.pyobj_var]
+                    k = self.variable_mapping[n.key]
+                    v = self.variable_mapping[n.assmt_var]
+                    res = builder.call(func, [c, k, v])
                 else:
                     raise Exception("unsupported", n)
 
         iterate(builder, self.ns)
         builder.ret(Builder.zero)
+
+    def create_create_list(self, builder):
+        try:
+            return self.variable_mapping['create_list']
+        except KeyError:
+            func_type = ir.FunctionType(Builder.longint, (Builder.longint,))
+            func = ir.Function(self.module, func_type, name='create_list')
+            self.variable_mapping['create_list'] = func
+            return func
+
+    def create_set_subscript(self, builder):
+        try:
+            return self.variable_mapping['set_subscript']
+        except KeyError:
+            func_type = ir.FunctionType(Builder.longint, 
+                                        (Builder.longint, Builder.longint, Builder.longint))
+            func = ir.Function(self.module, func_type, name='set_subscript')
+            self.variable_mapping['set_subscript'] = func
+            return func
 
     def create_inject_int(self, builder):
         try:
@@ -115,7 +144,7 @@ class Builder():
         try:
             return self.variable_mapping['inject_big'] 
         except KeyError:
-            func_type = ir.FunctionType(Builder.longint, (Builder.integer,))
+            func_type = ir.FunctionType(Builder.longint, (Builder.longint,))
             func = ir.Function(self.module, func_type, name='inject_big')
             self.variable_mapping['inject_big'] = func 
             return func
@@ -133,7 +162,7 @@ class Builder():
         try:
             return self.variable_mapping['project_big'] 
         except KeyError:
-            func_type = ir.FunctionType(Builder.integer, (Builder.longint,))
+            func_type = ir.FunctionType(Builder.longint, (Builder.longint,))
             func = ir.Function(self.module, func_type, name='project_big')
             self.variable_mapping['project_big'] = func 
             return func
@@ -205,7 +234,7 @@ class Builder():
         try:
             return self.variable_mapping['add']
         except KeyError:
-            func_type = ir.FunctionType(Builder.integer, (Builder.longint, Builder.longint))
+            func_type = ir.FunctionType(Builder.longint, (Builder.longint, Builder.longint))
             func = ir.Function(self.module, func_type, name='add')
             self.variable_mapping['add'] = func
             return func
@@ -233,6 +262,7 @@ class Builder():
             project_int = self.create_project_int(builder)
             inject_big = self.create_inject_big(builder)
             project_big = self.create_project_big(builder)
+            add_func = self.create_add(builder)
             negate = self.create_negate(builder)
 
             func_type = ir.FunctionType(Builder.longint, (Builder.longint, Builder.longint))
@@ -270,9 +300,9 @@ class Builder():
                             this_builder.ret(res15)
                         with otherwiseelse:
                             # treat them as bigs
-                            res16 = this_builder.call(project_big, [left])
-                            res17 = this_builder.call(project_big, [right])
-                            res18 = this_builder.add(lhs=res16, rhs=res17)
+                            b_l = this_builder.call(project_big, [left])
+                            b_r = this_builder.call(project_big, [right])
+                            res18 = this_builder.call(add_func, [b_l, b_r])
                             res19 = this_builder.call(inject_big, [res18])
                             this_builder.ret(res19)
             # Should never reach this
@@ -285,8 +315,7 @@ class Builder():
         try:
             return self.variable_mapping['llvm_runtime_neg']
         except KeyError:
-            # Needed runtime funcs
-            is_int = self.create_is_int(builder)
+            # Needed runtime funcs is_int = self.create_is_int(builder)
             is_bool = self.create_is_bool(builder)
             is_true = self.create_is_true(builder)
             inject_bool = self.create_inject_bool(builder)

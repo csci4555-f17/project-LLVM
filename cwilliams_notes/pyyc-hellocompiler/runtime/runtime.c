@@ -627,10 +627,13 @@ big_pyobj* add(big_pyobj* a, big_pyobj* b) {
     case LIST:
       return list_to_big(list_add(a->u.l, b->u.l));
     default:
+      printf("%d\t%d\n", a, b);
+      printf("right isn't a list\n");
       printf("error in add, expected a list\n");      
       exit(-1);
     }
   default:
+    printf("left isn't a list\n");
     printf("error in add, expected a list\n");      
     exit(-1);
   }
