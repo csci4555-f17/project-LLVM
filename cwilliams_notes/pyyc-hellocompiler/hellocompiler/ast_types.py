@@ -287,3 +287,25 @@ class LLVMRuntimeNeg(Node):
     
     def __str__(self):
         return "llvm_runtime_neg(%s)" % (self.expr)
+
+class LLVMRuntimeCmpEq(Node):
+    def __init__(self, lhs, rhs):
+        self.lhs = lhs
+        self.rhs = rhs
+    
+    def __repr__(self):
+        return "llvm_runtime_cmp_eq(%s, %s)" % (self.lhs, self.rhs)
+    
+    def __str__(self):
+        return "llvm_runtime_cmp_eq(%s, %s)" % (self.lhs, self.rhs)
+
+class LLVMRuntimeCmpNEq(Node):
+    def __init__(self, lhs, rhs):
+        self.lhs = lhs
+        self.rhs = rhs
+    
+    def __repr__(self):
+        return "llvm_runtime_cmp_neq(%s, %s)" % (self.lhs, self.rhs)
+    
+    def __str__(self):
+        return "llvm_runtime_cmp_neq(%s, %s)" % (self.lhs, self.rhs)

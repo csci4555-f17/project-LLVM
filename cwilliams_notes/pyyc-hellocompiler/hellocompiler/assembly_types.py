@@ -13,6 +13,28 @@ class Add(SimpleExpression):
     def __repr__(self):
         return "%s + %s" % (self.left, self.right)
     
+class LLVMRuntimeCmpEq(SimpleExpression):
+    def __init__(self, left, right):
+        self.left = left 
+        self.right = right 
+
+    def __str__(self):
+        return "LLVMRuntimeCmpEq(%s, %s)" % (self.left, self.right)
+
+    def __repr__(self):
+        return "LLVMRuntimeCmpEq(%s, %s)" % (self.left, self.right)
+    
+class LLVMRuntimeCmpNEq(SimpleExpression):
+    def __init__(self, left, right):
+        self.left = left 
+        self.right = right 
+
+    def __str__(self):
+        return "LLVMRuntimeCmpNEq(%s, %s)" % (self.left, self.right)
+
+    def __repr__(self):
+        return "LLVMRuntimeCmpNEq(%s, %s)" % (self.left, self.right)
+
 class LLVMRuntimeAdd(SimpleExpression):
     def __init__(self, left, right):
         self.left = left 
@@ -133,10 +155,12 @@ class List():
         return "list(len=%s)" % (self.length)
 
 class IfExp():
-    def __init__(self, test_var, then, else_):
+    def __init__(self, test_var, then, else_, phi_stmts, phi):
         self.test_var = test_var
         self.then = then
         self.else_ = else_
+        self.phi_stmts = phi_stmts
+        self.phi = phi
 
     def __str__(self):
         return '''(if {test_var}: {{
@@ -144,10 +168,14 @@ class IfExp():
 }}
 else: {{
     {else_stmts}
-}})'''.format(
+}}
+## phi creation
+{phi_stmts}
+)'''.format(
             test_var=self.test_var, 
             then_stmts="\n    ".join([str(s) for s in self.then]),
-            else_stmts="\n    ".join([str(s) for s in self.else_]))
+            else_stmts="\n    ".join([str(s) for s in self.else_]),
+            phi_stmts="\n    ".join([str(s) for s in self.phi_stmts]))
 
     def __repr__(self):
         return '''(if {test_var}: {{
@@ -155,10 +183,14 @@ else: {{
 }}
 else: {{
     {else_stmts}
-}})'''.format(
+}}
+## phi creation
+{phi_stmts}
+)'''.format(
             test_var=self.test_var, 
             then_stmts="\n    ".join([str(s) for s in self.then]),
-            else_stmts="\n    ".join([str(s) for s in self.else_]))
+            else_stmts="\n    ".join([str(s) for s in self.else_]),
+            phi_stmts="\n    ".join([str(s) for s in self.phi_stmts]))
 
 class CmpEq():
     def __init__(self, left, right):
@@ -304,3 +336,24 @@ def {fname}({args}):
                      args=", ".join([str(arg) for arg in self.args]),
                      body="\n".join(["\t"+str(i) for i in self.body]))
 
+class Phi():
+    def __init__(self, then_vs, else_vs):
+        self.then_vs = then_vs
+        self.else_vs = else_vs
+
+    def __repr__(self):
+        return 'new Phi(then=%s, else=%s)' % (", ".join([str(v) for v in self.then_vs]), ", ".join([str(v) for v in self.else_vs]))
+
+    def __str__(self):
+        return 'new Phi(then=%s, else=%s)' % (", ".join([str(v) for v in self.then_vs]), ", ".join([str(v) for v in self.else_vs]))
+
+class AddIncoming():
+    def __init__(self, phi, v):
+        self.phi = phi
+        self.v = v
+
+    def __repr__(self):
+        return 'add_incoming(%s, %s)' % (self.phi, self.v)
+
+    def __str__(self):
+        return 'add_incoming(%s, %s)' % (self.phi, self.v)

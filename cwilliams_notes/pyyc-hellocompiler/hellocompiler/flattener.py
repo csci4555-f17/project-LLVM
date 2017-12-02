@@ -137,6 +137,20 @@ class Flattener():
             (assn_instrs, assn_var) = self.assign_new(t.LLVMRuntimeAdd(slLast, srLast))
             return (stmts + assn_instrs, assn_var)
 
+        elif isinstance(n, LLVMRuntimeCmpEq):
+            (sl, slLast) = self.descend(n.lhs)
+            (sr, srLast) = self.descend(n.rhs)
+
+            (assn_instrs, assn_var) = self.assign_new(t.LLVMRuntimeCmpEq(slLast, srLast))
+            return (sl + sr + assn_instrs, assn_var)
+
+        elif isinstance(n, LLVMRuntimeCmpNEq):
+            (sl, slLast) = self.descend(n.lhs)
+            (sr, srLast) = self.descend(n.rhs)
+
+            (assn_instrs, assn_var) = self.assign_new(t.LLVMRuntimeCmpNEq(slLast, srLast))
+            return (sl + sr + assn_instrs, assn_var)
+        
         elif isinstance(n, UnarySub):
             (s, slast) = self.descend(n.expr)
             (assmt_instrs, assmt_var) = self.assign_new(t.Neg(slast))
@@ -255,26 +269,27 @@ class Flattener():
 
             return (instrs, inj_var)
 
-
-        
         elif isinstance(n, IfExp):
             (stest, stestlast) = self.descend(n.test)
-            v = self.get_new_var()
+            then_v = self.get_new_var()
+            else_v = self.get_new_var()
 
             if isinstance(n.then, Stmt):
                 sthen, thenvar = self.descend(n.then), stestlast
             else:
                 (sthen, thenvar) = self.descend(n.then)
-                sthen.append(t.Assign(v, thenvar))
+                sthen.append(t.Assign(then_v, thenvar))
 
             if isinstance(n.else_, Stmt):
                 selse, elsevar = self.descend(n.else_), stestlast
             else:
                 (selse, elsevar) = self.descend(n.else_)
-                selse.append(t.Assign(v, elsevar))
+                selse.append(t.Assign(else_v, elsevar))
 
-            stest.append(t.IfExp(stestlast, sthen, selse))
-            return (stest, v)
+            phi = t.Phi(then_vs = [then_v], else_vs=[else_v])
+            (assn_instrs, assn_var) = self.assign_new(phi)
+            stest.append(t.IfExp(stestlast, sthen, selse, assn_instrs, phi))
+            return (stest, assn_var)
 
         elif isinstance(n, Let):
             var = n.var

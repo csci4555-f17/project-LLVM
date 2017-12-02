@@ -33,6 +33,9 @@ def flatten(fn):
     except SyntaxError as se:
         print "SyntaxError:", se
 
+def print_flattened_code(fcs):
+    for fc in fcs:
+        print fc
 
 if __name__ == "__main__":
     #print sys.argv
@@ -46,9 +49,9 @@ if __name__ == "__main__":
         heaped = heapify.heapify(explicated)
 #        print "heaped", heaped
         (code, funs) = closure_convert.closure_convert(heaped)
-#        print code
+        print code
         flat_code = flat.flatten(code)
-#        print flat_code
+        print_flattened_code(flat_code)
 
         b = builder.Builder(flat_code)
         b.build()

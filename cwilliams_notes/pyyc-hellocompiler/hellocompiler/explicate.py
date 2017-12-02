@@ -142,7 +142,12 @@ def explicate(ast_):
                                    InjectFrom('bool', CallFunc(Name('equal'), 
                                        [ProjectTo('big', l), ProjectTo('big', r)]))))
                                          
-            return letify(exp_left, lambda l: letify(exp_right, lambda r: result(l,r)))
+            if op == "==":
+                return LLVMRuntimeCmpEq(exp_left, exp_right)
+            elif op == "!=":
+                return LLVMRuntimeCmpNEq(exp_left, exp_right)
+            else:
+                raise Exception("unsupported op", op)
 
         if isinstance(n, Add):
             left = descend(n.left)

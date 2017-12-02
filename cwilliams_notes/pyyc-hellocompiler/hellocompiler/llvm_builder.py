@@ -14,7 +14,98 @@ class Builder():
         self.ns = ns
         self.variable_mapping = {}
         self.module = None
-        
+
+    def assign_handler(self, builder, n, meta = None):
+        if isinstance(n, T.Assign):
+            exp = n.simple
+            if isinstance(exp, vv.Value):
+                res = ir.Constant(Builder.integer, exp.v)
+            elif isinstance(exp, T.InjectInt):
+                func = self.create_inject_int(builder)
+                res = builder.call(func, [self.variable_mapping[exp.val]])
+            elif isinstance(exp, T.InjectBool):
+                func = self.create_inject_bool(builder)
+                res = builder.call(func, [self.variable_mapping[exp.val]])
+            elif isinstance(exp, T.InjectBig):
+                func = self.create_inject_big(builder)
+                res = builder.call(func, [self.variable_mapping[exp.val]])
+            elif isinstance(exp, T.ProjectInt):
+                func = self.create_project_int(builder)
+                res = builder.call(func, [self.variable_mapping[exp.val]])
+            elif isinstance(exp, T.ProjectBool):
+                func = self.create_project_bool(builder)
+                res = builder.call(func, [self.variable_mapping[exp.val]])
+            elif isinstance(exp, T.ProjectBig):
+                func = self.create_project_big(builder)
+                res = builder.call(func, [self.variable_mapping[exp.val]])
+            elif isinstance(exp, T.Input):
+                func = self.create_input(builder)
+                res = builder.call(func, [])
+            elif isinstance(exp, T.CallFunc) and exp.func_name == "is_int":
+                func = self.create_is_int(builder)
+                res = builder.call(func, [self.variable_mapping[exp.args[0]]])
+            elif isinstance(exp, T.CallFunc) and exp.func_name == "is_bool":
+                func = self.create_is_bool(builder)
+                res = builder.call(func, [self.variable_mapping[exp.args[0]]])
+            elif isinstance(exp, T.CallFunc) and exp.func_name == "add":
+                l = self.variable_mapping[exp.args[0]]
+                r = self.variable_mapping[exp.args[1]]
+                func = self.create_add(builder)
+                res = builder.call(func, [l, r])
+            elif isinstance(exp, T.CallFunc) and exp.func_name == "is_true":
+                v = self.variable_mapping[exp.args[0]]
+                func = self.create_is_true(builder)
+                res = builder.call(func, [v])
+            elif isinstance(exp, T.Add):
+                l = self.variable_mapping[exp.left]
+                r = self.variable_mapping[exp.right]
+                res = builder.add(lhs=l, rhs=r)
+            elif isinstance(exp, T.LLVMRuntimeAdd):
+                l = self.variable_mapping[exp.left]
+                r = self.variable_mapping[exp.right]
+                func = self.create_llvm_runtime_add(builder)
+                res = builder.call(func, [l, r])
+            elif isinstance(exp, T.LLVMRuntimeNeg):
+                e = self.variable_mapping[exp.val]
+                func = self.create_llvm_runtime_neg(builder)
+                res = builder.call(func, [e])
+            elif isinstance(exp, vv.Variable):
+                res = self.variable_mapping[exp]
+            elif isinstance(exp, vv.BoolValue):
+                res = ir.Constant(Builder.integer, int(exp.v))
+            elif isinstance(exp, T.List):
+                length = self.variable_mapping[exp.length]
+                func = self.create_create_list(builder)
+                res = builder.call(func, [length])
+            elif isinstance(exp, T.LLVMRuntimeCmpEq):
+                l = self.variable_mapping[exp.left]
+                r = self.variable_mapping[exp.right]
+                func = self.create_llvm_runtime_cmp_eq(builder)
+                res = builder.call(func, [l, r])
+            elif isinstance(exp, T.LLVMRuntimeCmpNEq):
+                l = self.variable_mapping[exp.left]
+                r = self.variable_mapping[exp.right]
+                func = self.create_llvm_runtime_cmp_neq(builder)
+                res = builder.call(func, [l, r])
+            elif isinstance(exp, T.Phi):
+                b_t = meta['then_block']
+                b_o = meta['otherwise_block']
+                print str(b_t)
+                f = meta['func']
+
+                res = builder.phi(Builder.longint)
+                for v in exp.then_vs:
+                    v_ = self.variable_mapping[v]
+                    res.add_incoming(v_, b_t)
+                for v in exp.else_vs:
+                    v_ = self.variable_mapping[v]
+                    res.add_incoming(v_, b_o)
+            else:
+                raise Exception("unsupported ", exp)
+
+            self.variable_mapping[n.assmt] = res
+            return res
+
 
     def build(self):
         self.variable_mapping = {}
@@ -24,82 +115,34 @@ class Builder():
         block = func_main.append_basic_block(name='entry')
         builder = ir.IRBuilder(block)
 
-        def iterate(builder, ns):
+        def iterate(builder, ns, meta = None):
             for n in ns:
                 if isinstance(n, T.Assign):
-                    exp = n.simple
-                    if isinstance(exp, vv.Value):
-                        res = ir.Constant(Builder.integer, exp.v)
-                    elif isinstance(exp, T.InjectInt):
-                        func = self.create_inject_int(builder)
-                        res = builder.call(func, [self.variable_mapping[exp.val]])
-                    elif isinstance(exp, T.InjectBool):
-                        func = self.create_inject_bool(builder)
-                        res = builder.call(func, [self.variable_mapping[exp.val]])
-                    elif isinstance(exp, T.InjectBig):
-                        func = self.create_inject_big(builder)
-                        res = builder.call(func, [self.variable_mapping[exp.val]])
-                    elif isinstance(exp, T.ProjectInt):
-                        func = self.create_project_int(builder)
-                        res = builder.call(func, [self.variable_mapping[exp.val]])
-                    elif isinstance(exp, T.ProjectBool):
-                        func = self.create_project_bool(builder)
-                        res = builder.call(func, [self.variable_mapping[exp.val]])
-                    elif isinstance(exp, T.ProjectBig):
-                        func = self.create_project_big(builder)
-                        res = builder.call(func, [self.variable_mapping[exp.val]])
-                    elif isinstance(exp, T.Input):
-                        func = self.create_input(builder)
-                        res = builder.call(func, [])
-                    elif isinstance(exp, T.CallFunc) and exp.func_name == "is_int":
-                        func = self.create_is_int(builder)
-                        res = builder.call(func, [self.variable_mapping[exp.args[0]]])
-                    elif isinstance(exp, T.CallFunc) and exp.func_name == "is_bool":
-                        func = self.create_is_bool(builder)
-                        res = builder.call(func, [self.variable_mapping[exp.args[0]]])
-                    elif isinstance(exp, T.CallFunc) and exp.func_name == "add":
-                        l = self.variable_mapping[exp.args[0]]
-                        r = self.variable_mapping[exp.args[1]]
-                        func = self.create_add(builder)
-                        res = builder.call(func, [l, r])
-                    elif isinstance(exp, T.Add):
-                        l = self.variable_mapping[exp.left]
-                        r = self.variable_mapping[exp.right]
-                        res = builder.add(lhs=l, rhs=r)
-                    elif isinstance(exp, T.LLVMRuntimeAdd):
-                        l = self.variable_mapping[exp.left]
-                        r = self.variable_mapping[exp.right]
-                        func = self.create_llvm_runtime_add(builder)
-                        res = builder.call(func, [l, r])
-                    elif isinstance(exp, T.LLVMRuntimeNeg):
-                        e = self.variable_mapping[exp.val]
-                        func = self.create_llvm_runtime_neg(builder)
-                        res = builder.call(func, [e])
-                    elif isinstance(exp, vv.Variable):
-                        res = self.variable_mapping[exp]
-                    elif isinstance(exp, vv.BoolValue):
-                        res = ir.Constant(Builder.integer, int(exp.v))
-                    elif isinstance(exp, T.List):
-                        length = self.variable_mapping[exp.length]
-                        func = self.create_create_list(builder)
-                        res = builder.call(func, [length])
-                    else:
-                        raise Exception("unsupported ", exp)
-
-                    self.variable_mapping[n.assmt] = res
-
+                    res = self.assign_handler(builder, n, meta)
                 elif isinstance(n, T.Print):
                     func = self.create_print_any(builder)
                     res = builder.call(func, [self.variable_mapping[n.val]])
+                elif isinstance(n, T.AddIncoming):
+                    phi = self.variable_mapping[n.phi]
+                    v = self.variable_mapping[n.v]
+                    b = meta['block']
+                    phi.add_incoming(v, name="entry.if")
+
                 elif isinstance(n, T.IfExp):
                     func = self.create_is_true(builder)
                     is_true = builder.call(func, [self.variable_mapping[n.test_var]])
                     bool_is_true = builder.icmp_unsigned('!=', lhs=is_true, rhs=Builder.zero)
                     with builder.if_else(bool_is_true) as (then, otherwise):
-                        with then:
-                            iterate(builder, n.then)
-                        with otherwise:
-                            iterate(builder, n.else_)
+                        with then as then_b:
+                            _meta = {"block": then_b}
+                            iterate(builder, n.then, meta)
+                        with otherwise as otherwise_b:
+                            _meta = {"block": otherwise_b}
+                            iterate(builder, n.else_, meta)
+                    meta_ = {'then_block':then_b, 
+                             'otherwise_block':otherwise_b,
+                             'func':func_main}
+                    iterate(builder, n.phi_stmts, meta_)
                 elif isinstance(n, T.SubscriptAssign):
                     func = self.create_set_subscript(builder)
                     c = self.variable_mapping[n.pyobj_var]
@@ -248,6 +291,15 @@ class Builder():
             self.variable_mapping['negate'] = func
             return func
 
+    def create_equal(self, builder):
+        try:
+            return self.variable_mapping['equal']
+        except KeyError:
+            func_type = ir.FunctionType(Builder.integer, (Builder.longint, Builder.longint))
+            func = ir.Function(self.module, func_type, name='equal')
+            self.variable_mapping['equal'] = func
+            return func
+
     def create_llvm_runtime_add(self, builder):
         try:
             return self.variable_mapping['llvm_runtime_add']
@@ -351,6 +403,90 @@ class Builder():
             this_builder.ret(ir.Constant(Builder.longint, 0))
             self.variable_mapping['llvm_runtime_neg'] = func
             return func
+
+    def create_llvm_runtime_cmp_eq(self, builder):
+        try:
+            return self.variable_mapping['llvm_runtime_cmp_eq']
+        except KeyError:
+            is_int = self.create_is_int(builder)
+            is_bool = self.create_is_bool(builder)
+            is_true = self.create_is_true(builder)
+            inject_bool = self.create_inject_bool(builder)
+            project_int = self.create_project_int(builder)
+            project_bool = self.create_project_bool(builder)
+            project_big = self.create_project_big(builder)
+            equal = self.create_equal(builder)
+
+            func_type = ir.FunctionType(Builder.longint, (Builder.longint, Builder.longint))
+            func = ir.Function(self.module, func_type, name='llvm_runtime_cmp_eq')
+            block = func.append_basic_block(name="entry")
+            this_builder = ir.IRBuilder(block)
+            (left, right) = func.args
+
+            res0 = this_builder.call(is_int, [left])
+            res1 = this_builder.call(inject_bool, [res0])
+            res2 = this_builder.call(is_true, [res1])
+            res3 = this_builder.icmp_unsigned('!=', lhs=res2, rhs=Builder.zero) 
+            with this_builder.if_else(res3) as (then, otherwise):
+                with then:
+                    res0 = this_builder.call(project_int, [left])
+                    res1 = this_builder.call(project_int, [right])
+                    res2 = this_builder.icmp_signed('==', lhs=res0, rhs=res1)
+                    res3 = this_builder.zext(res2, Builder.integer)
+                    res4 = this_builder.call(inject_bool, [res3])
+                    this_builder.ret(res4)
+                with otherwise:
+                    res0 = this_builder.call(is_bool, [left])
+                    res1 = this_builder.call(inject_bool, [res0])
+                    res2 = this_builder.call(is_true, [res1])
+                    res3 = this_builder.icmp_unsigned('!=', lhs=res2, rhs=Builder.zero) 
+                    with this_builder.if_else(res3) as (elsethen, elseotherwise):
+                        with elsethen:
+                            res0 = this_builder.call(project_bool, [left])
+                            res1 = this_builder.call(project_bool, [right])
+                            res2 = this_builder.icmp_signed('==', lhs=res0, rhs=res1)
+                            res3 = this_builder.zext(res2, Builder.integer)
+                            res4 = this_builder.call(inject_bool, [res3])
+                            this_builder.ret(res4)
+                        with elseotherwise:
+                            res0 = this_builder.call(project_big, [left])
+                            res1 = this_builder.call(project_big, [right])
+                            res2 = this_builder.call(equal, [res0, res1])
+                            res3 = this_builder.call(inject_bool, [res2])
+                            this_builder.ret(res3)
+            # Should never reach here
+            this_builder.ret(ir.Constant(Builder.longint, 0))
+            self.variable_mapping['llvm_runtime_cmp_eq'] = func
+            return func
+
+    def create_llvm_runtime_cmp_neq(self, builder):
+        try:
+            return self.variable_mapping['llvm_runtime_cmp_eq']
+        except KeyError:
+            cmp_eq = self.create_llvm_runtime_cmp_eq(builder)
+            is_true = self.create_is_true(builder)
+            inject_bool = self.create_inject_bool(builder)
+            print_any = self.create_print_any(builder)
             
 
+            func_type = ir.FunctionType(Builder.longint, (Builder.longint, Builder.longint))
+            func = ir.Function(self.module, func_type, name='llvm_runtime_cmp_neq')
+            block = func.append_basic_block(name="entry")
+            this_builder = ir.IRBuilder(block)
+            (left, right) = func.args
+
+            res0 = this_builder.call(cmp_eq, [left, right])
+            res1 = this_builder.call(is_true, [res0])
+            res2 = this_builder.icmp_unsigned('!=', lhs=res1, rhs=Builder.zero) 
+            with this_builder.if_else(res2) as (then, otherwise):
+                with then:
+                    f = this_builder.call(inject_bool, [Builder.zero])
+                    this_builder.ret(f)
+                with otherwise:
+                    one = ir.Constant(Builder.integer, 1)
+                    f = this_builder.call(inject_bool, [one])
+                    this_builder.ret(f)
+            this_builder.ret(res0)
+            self.variable_mapping['llvm_runtime_cmp_neq'] = func
+            return func
 

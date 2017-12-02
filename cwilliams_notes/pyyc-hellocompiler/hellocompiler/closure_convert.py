@@ -195,6 +195,16 @@ def closure_convert(ast_):
             (ecode, efuns) = descend(n.expr)
             return (LLVMRuntimeNeg(ecode), efuns)
 
+        if isinstance(n, LLVMRuntimeCmpEq):
+            (lcode, lfuns) = descend(n.lhs)
+            (rcode, rfuns) = descend(n.rhs)
+            return (LLVMRuntimeCmpEq(lcode, rcode), lfuns + rfuns)
+
+        if isinstance(n, LLVMRuntimeCmpNEq):
+            (lcode, lfuns) = descend(n.lhs)
+            (rcode, rfuns) = descend(n.rhs)
+            return (LLVMRuntimeCmpNEq(lcode, rcode), lfuns + rfuns)
+
         if isinstance(n, LambdaHeapified):
             
             fvars = freevars.free_vars(n).intersection(heapify_vars)
