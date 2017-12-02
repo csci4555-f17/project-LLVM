@@ -1,3 +1,5 @@
-x = 0
-y = 2
-print x or y 
+def a():
+	return 1
+y = a()
+print y
+
