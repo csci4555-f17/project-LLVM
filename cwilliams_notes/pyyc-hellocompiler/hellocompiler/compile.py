@@ -39,7 +39,8 @@ def print_flattened_code(fcs):
 
 if __name__ == "__main__":
     #print sys.argv
-    for fn in sys.argv[1:]:
+    input_files = sys.argv[1:]
+    for fn in input_files:
         flat = flt.Flattener()
         parsed = compiler.parseFile(fn)
         declassified = declassify.declassify(parsed)
@@ -49,12 +50,14 @@ if __name__ == "__main__":
         heaped = heapify.heapify(explicated)
 #        print "heaped", heaped
         (code, funs) = closure_convert.closure_convert(heaped)
-        print code
+        #print code
         flat_code = flat.flatten(code)
-        print_flattened_code(flat_code)
+        #print_flattened_code(flat_code)
 
         b = builder.Builder(flat_code)
         b.build()
-	with open('test.ll', 'w') as f:
+	
+	ll_file_name = fn.split('.')[0]	
+	with open(ll_file_name + '.ll', 'w') as f:
         	f.write(str(b.module))
         ct.compile(str(b.module))

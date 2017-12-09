@@ -3,6 +3,12 @@ from __future__ import print_function
 from ctypes import CFUNCTYPE, c_double, c_int
 
 import llvmlite.binding as llvm
+import sys
+
+INPUT_FILE = sys.argv[1]
+if not INPUT_FILE:
+    print("Requires input file")
+    sys.exit(1)
 
 # All these initializations are required for code generation!
 llvm.initialize()
@@ -10,21 +16,8 @@ llvm.initialize_native_target()
 llvm.initialize_native_asmprinter()  # yes, even this one
 llvm.load_library_permanently("/opt/runtime/runtime.so")
 
-llvm_ir = """
-   ; ModuleID = "examples/ir_fpadd.py"
-   target triple = "unknown-unknown-unknown"
-   target datalayout = ""
-
-   declare void @"print_int_nl"(i32 %".1")
-
-   define double @"fpadd"(double %".1", double %".2")
-   {
-   entry:
-     %"res" = fadd double %".1", %".2"
-     call void @"print_int_nl"(i32 34)
-     ret double %"res"
-   }
-   """
+with open(sys.argv[1], 'r') as f:
+    llvm_ir = f.read()
 
 def create_execution_engine():
     """
@@ -60,7 +53,7 @@ mod = compile_ir(engine, llvm_ir)
 
 # Look up the function pointer (a Python int)
 # Run the function via ctypes
-func_ptr = engine.get_function_address("fpadd")
-cfunc = CFUNCTYPE(c_double, c_double, c_double)(func_ptr)
-res = cfunc(1.0, 3.5)
-print("fpadd(...) =", res)
+func_ptr = engine.get_function_address("main")
+cfunc = CFUNCTYPE(c_int)(func_ptr)
+res = cfunc()
+sys.exit(res)

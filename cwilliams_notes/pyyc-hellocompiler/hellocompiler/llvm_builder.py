@@ -133,10 +133,12 @@ class Builder():
                     is_true = builder.call(func, [self.variable_mapping[n.test_var]])
                     bool_is_true = builder.icmp_unsigned('!=', lhs=is_true, rhs=Builder.zero)
                     with builder.if_else(bool_is_true) as (then, otherwise):
-                        with then as then_b:
+                        with then:
+			    then_b = builder.basic_block
                             _meta = {"block": then_b}
                             iterate(builder, n.then, meta)
-                        with otherwise as otherwise_b:
+                        with otherwise:
+			    otherwise_b = builder.basic_block
                             _meta = {"block": otherwise_b}
                             iterate(builder, n.else_, meta)
                     meta_ = {'then_block':then_b, 

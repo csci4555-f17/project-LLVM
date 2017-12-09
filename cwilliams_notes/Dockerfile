@@ -30,5 +30,6 @@ RUN git clone https://github.com/numba/llvmlite.git && \
 COPY simplefunction.py /root
 COPY generate-exec.sh /root
 COPY simplecompile.py /root
+COPY example-optimization-pass.sh /root
 
 WORKDIR /root
