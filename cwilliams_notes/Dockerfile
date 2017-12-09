@@ -27,6 +27,9 @@ RUN git clone https://github.com/cwillia9/llvmlite.git && \
     git checkout if_else_change && \
     python setup.py install
 
+RUN apt-get -y update && \
+    apt-get -y install clang
+
 COPY simplefunction.py /root
 COPY generate-exec.sh /root
 COPY simplecompile.py /root
