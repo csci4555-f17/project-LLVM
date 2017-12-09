@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 RUN apt-get -y update && \
- 	apt-get -y install git make gcc libc6-dev-i386 python-pip vim wget software-properties-common python-software-properties
+ 	apt-get -y install git make gcc libc6-dev-i386 python-pip vim wget software-properties-common python-software-properties clang
 
 # Weird steps to get around some key authentication erros while trying to add the 
 # llvm apt repo in the following step
@@ -22,13 +22,10 @@ ENV LLVM_CONFIG=/usr/bin/llvm-config-5.0
 RUN pip install --upgrade pip && \
 	pip install ply ipython pytest
 
-RUN git clone https://github.com/cwillia9/llvmlite.git && \
+RUN git clone https://github.com/numba/llvmlite.git && \
     cd llvmlite && \
-    git checkout if_else_change && \
+    git checkout tags/v0.21.0 && \
     python setup.py install
-
-RUN apt-get -y update && \
-    apt-get -y install clang
 
 COPY simplefunction.py /root
 COPY generate-exec.sh /root
