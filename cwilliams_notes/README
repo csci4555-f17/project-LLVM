@@ -1,3 +1,7 @@
+End to End Run
+==============
+./example-optimization-pass.sh
+
 Generating LLVM IR for runtime environment
 ==========================================
 
@@ -27,3 +31,33 @@ llvmlite.binding.load_library_permanently("runtime.so")
 Target Architecture
 ===================
 "x86_64-pc-linux-gnu"
+
+Helpful Commands
+================
+1. generate all .ll files
+    clang-3.8 -S -emit-llvm *.c
+2. link them into a single one
+    llvm-link-5.0 -S -v -o single.ll *.ll
+3. (Optional) Optimise your code (maybe some alias analysis)
+    opt-5.0 -S -O3 -aa -basicaaa -tbaa -licm single.ll -o optimised.ll
+4. Generate assembly (generates a optimised.s file)
+    llc-5.0 optimised.ll
+5. Create executable (named a.out)
+    clang-3.8 optimised.s
+
+Generate runtime.so
+===================
+gcc -shared -o runtime.so -fPIC *.c
+
+
+Links:
+    http://releases.llvm.org/2.6/docs/tutorial/JITTutorial1.html
+   
+    linking a binary in llvmlite
+    https://stackoverflow.com/questions/36658726/link-c-in-llvmlite
+
+    linking c in llvmlite
+    https://stackoverflow.com/questions/36658726/link-c-in-llvmlite
+
+    allow llvmlite to also link object code
+    https://github.com/numba/llvmlite/issues/311
