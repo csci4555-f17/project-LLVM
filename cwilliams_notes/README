@@ -18,7 +18,7 @@ Generate SO from runtime
 2. gcc *.o -m32 -shared -o runtimelib.so
 
 ALTERNATIVELY
-gcc -shared -o runtimelib.so -fPIC -m32 *.c
+gcc -shared -o runtime.so -fPIC *.c
 
 Linking SO in llvm
 ==================
