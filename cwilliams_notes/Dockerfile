@@ -43,5 +43,6 @@ COPY simplefunction.py /root
 COPY generate-exec.sh /root
 COPY simplecompile.py /root
 COPY example-optimization-pass.sh /root
+COPY docker-resources/.bashrc /root
 
 WORKDIR /root
