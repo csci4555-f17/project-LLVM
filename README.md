@@ -1,5 +1,11 @@
 The slides are included at the top level of this directory as a pdf title 'Project LLVM.pdf'.
 
+Pre-Proposal: https://github.com/csci4555-f17/project-LLVM/blob/master/pre_proposal.txt
+Proposal: https://github.com/csci4555-f17/project-LLVM/blob/master/proposal.md
+Status Update: https://github.com/csci4555-f17/project-LLVM/blob/master/status_update.md
+Paper: https://github.com/csci4555-f17/project-LLVM/blob/master/Paper.pdf
+Slides: https://github.com/csci4555-f17/project-LLVM/blob/master/Project%20LLVM.pdf
+
 To run the code:
 
 1. cd into cwilliams_notes
